@@ -1,0 +1,88 @@
+
+<odoo>
+    <!-- <template id="product_price_perm"  inherit_id="website_sale.products_item"  name="Product Description">
+        <xpath expr="//form[hasclass('oe_product_cart')]" position="replace">
+            <div class="product_price mb-1" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                <span class="h5" t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                <t t-if="is_connected">
+                    <del t-attf-class="text-danger ml-1 h6 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                    <span itemprop="price" style="display:none;" t-esc="combination_info['price']" />
+                    <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name" />
+                </t>
+            </div> 
+        </xpath>
+    </template> -->
+
+    <template id="add_to_compared" inherit_id="website_sale.products_item" customize_show="True" name="Comparison List" priority="22">
+        <xpath expr="//a[hasclass('o_product_link')]" position="replace">
+                <t t-if="not user_id._is_public()">
+                    <a class="o_product_link css_editable_mode_hidden" t-att-href="product_href"/>
+
+                </t>
+        </xpath>
+
+        
+
+
+        <xpath expr="//div[hasclass('oe_product_image')]" position="replace">
+            <t t-if="not user_id._is_public()">
+                
+                <div class="card-body p-1 oe_product_image">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                    <a t-att-href="product_href" class="d-block h-100" itemprop="url">
+                        <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                        <span t-field="image_holder.image_1920"
+                            t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"
+                            class="d-flex h-100 justify-content-center align-items-center"/>
+                    </a>
+                </div>
+
+
+
+            </t> 
+            <t t-else="">
+                <div class="card-body p-1 oe_product_image">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                    <a href="#" class="d-block h-100" itemprop="url">
+                        <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                        <span t-field="image_holder.image_1920"
+                            t-options="{'widget': 'image', 'preview_image': 'image_1024' if product_image_big else 'image_256', 'itemprop': 'image'}"
+                            class="d-flex h-100 justify-content-center align-items-center"/>
+                    </a>
+                </div>
+            
+            </t>
+            
+            
+        </xpath>
+
+        <xpath expr="//h6[hasclass('o_wsale_products_item_title')]" position="replace">
+            <t t-if="not user_id._is_public()">
+                <h6 class="o_wsale_products_item_title mb-1">
+                    <a class="text-primary text-decoration-none" itemprop="name" t-att-href="product_href" t-att-content="product.name" t-field="product.name" />
+                    <a role="button" t-if="not product.website_published" t-att-href="product_href" class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished</a>
+                </h6>
+            </t> 
+            <t t-else="">
+                <h6 class="o_wsale_products_item_title mb-1">
+                    <a class="text-primary text-decoration-none" itemprop="name" href="#" t-att-content="product.name" t-field="product.name" />
+                    <a role="button" t-if="not product.website_published" href="#" class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished</a>
+                </h6>
+            
+            </t>
+            
+            
+        </xpath>
+
+        <xpath expr="//div[hasclass('product_price')]" position="replace">
+            <div class="product_price mb-1" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                <t t-if="not user_id._is_public()">
+                    <span class="h5" t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                    <del t-attf-class="text-danger ml-1 h6 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                    <span itemprop="price" style="display:none;" t-esc="combination_info['price']" />
+                    <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name" />
+                </t>
+            </div> 
+        </xpath>
+    </template>
+</odoo>

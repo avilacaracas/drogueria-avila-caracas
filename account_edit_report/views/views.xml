@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-<template id="external_layout_bold_ksp" inherit_id="web.external_layout_standard">
+<!-- <template id="external_layout_bold_ksp" inherit_id="web.external_layout_standard">
     <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']/div" position="replace">
         <div class="row">
                 <div class="col-3 mb4">
@@ -19,7 +19,7 @@
             </div>
         
     </xpath>
-</template>
+</template> -->
 
     <template
         id="report_invoice_document_comments"

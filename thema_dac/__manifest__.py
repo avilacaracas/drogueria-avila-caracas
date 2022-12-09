@@ -19,6 +19,7 @@
         'views/map_cliente.xml',
         'views/map_aliado.xml',
         'views/snippets/banner.xml',
+        'views/oculta_precio.xml',
         
     ],
     'images': [

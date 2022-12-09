@@ -27,6 +27,7 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/account_move_view.xml',
+        'views/reporte.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

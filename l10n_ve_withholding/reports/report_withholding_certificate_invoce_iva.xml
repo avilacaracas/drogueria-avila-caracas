@@ -136,7 +136,7 @@
             </t>
         </template>
 
-        <record id="report_qweb_paperformat_l" model="report.paperformat">
+    <record id="report_qweb_paperformat_l" model="report.paperformat">
         <field name="name">Account financial report qweb landscape</field>
         <field name="default" eval="True"/>
         <field name="format">custom</field>
@@ -150,7 +150,7 @@
         <field name="header_line" eval="False"/>
         <field name="header_spacing">10</field>
         <field name="dpi">110</field>
-        <field name="orientation">Landscape</field>
+        <!-- <field name="orientation">Landscape</field> -->
     </record>
     
     <report
