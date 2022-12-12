@@ -3,6 +3,8 @@
 from odoo import models, fields, api
 
 
+
+
 class account_edit_report(models.Model):
     _name = 'account_edit_report.notas_pagar'
    
@@ -31,6 +33,26 @@ class datos_computados_convercion(models.Model):
         
         self.totalusd = round(self.amount_residual * rates.rate)
        
+
+
+class clientAcesorVenta(models.Model):
+    _inherit= 'res.partner'
+
+    is_advisor  = fields.Boolean(string='Es asesor de venta')
+    is_laboratory  = fields.Boolean(string='Es laboratorio')
+
+
+
+class laboratory(models.Model):
+    _inherit= 'product.template'
+
+    laboratory = fields.Many2one(comodel_name='res.partner',inverse_name='id',domain="[('is_laboratory','=','1')]" ,string='Laboratorios')
+
+class bankReference(models.Model):
+
+    _inherit= 'account.bank.statement'
+
+    _sql_constraints = [('name', 'unique(name)', 'El Numero de Referencia debe ser unico'),]
 
 
 
