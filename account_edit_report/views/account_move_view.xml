@@ -62,6 +62,38 @@
 
 
     <menuitem id="menu_account_edit_report_notas" name="Cuentas Bancarias para el pago" parent="menu_account_edit_report_notas_main"  sequence="1" action="view_account_edit_report_notas_pagar_view"/>
-    <!--  -->
+    <!-- Bandera para asesor  -->
+
+    <record id="view_res_partne_form_intd" model="ir.ui.view">
+            <field name="name">view.res.partne.formt</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="is_advisor"/>
+                    <field name="is_laboratory"/>
+                </xpath>
+            </field>
+        </record>   
+
+       <record id="view_res_partne_laboratory" model="ir.ui.view">
+            <field name="name">view.product.template.formt</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="laboratory"/>  
+                </xpath>
+            </field>
+        </record>   
+
+
+
+
+
+
+
+
+
     </data>
 </odoo>
