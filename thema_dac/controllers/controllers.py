@@ -16,7 +16,7 @@ class SnoppetController(http.Controller):
     @http.route('/get_main_product', auth="public", method=['GET'], csrf=False , website=True)
     def get_main_product(self):
         try:
-            print('category')
+            
             main_products = request.env['product.template'].sudo().search([('Published', '=', True)], order='create_date asc', limit=8)
             category = request.env['product.category'].sudo().search([('parent_id','=',False),('status', '=', True)], order='name asc')
             # print(category)
@@ -229,6 +229,29 @@ class SnoppetController(http.Controller):
                 m.append(values)
             
             return m
+        except Exception as e:
+            return Response(json.dumps({'error': str(e)}), content_type='application/json;charset=utf-8', status=505)
+
+
+
+
+    # @http.route('/asignacion_cliente',  type="json", auth="public", method=['get'], csrf=False , website=True)
+    # def objectasignacion_cliente(self,args):
+
+    @http.route('/asignacion_cliente', type="json" ,auth="public", method=['GET'], csrf=False , website=True)
+    def objectasignacion_cliente(self,args):
+    
+        try:
+            order_id = request.env['sale.order'].sudo().search([('id', '=', int(args[0]['order_id']))])
+            for order in order_id:
+                order.write({
+                    'partner_id':  int(args[0]['client_invoce']),
+                    'partner_invoice_id': int(args[0]['client_invoce']),
+                    'partner_shipping_id': int(args[0]['client_invoce']),
+                    'advisor': int(args[0]['user']),
+                })
+
+            return 'ok'
         except Exception as e:
             return Response(json.dumps({'error': str(e)}), content_type='application/json;charset=utf-8', status=505)
 

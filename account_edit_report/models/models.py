@@ -23,6 +23,21 @@ class datos_computados_convercion(models.Model):
 
     usd = fields.Float(compute="_compute_usd")
     totalusd = fields.Float(compute="_compute_usd")
+    advisor  = fields.Many2one(comodel_name='res.partner',inverse_name='id',domain="[('is_advisor','=','1')]" ,string='Asesor de venta')
+
+    def action_post(self):
+        rec = super().action_post()
+        
+        
+        
+        if self.invoice_origin:
+
+            orders = self.env['sale.order'].search([('name','=',self.invoice_origin)])
+            for order in orders:
+                self.write({'advisor': order.advisor,})
+        
+        return rec
+    
 
 
 
@@ -40,6 +55,12 @@ class clientAcesorVenta(models.Model):
 
     is_advisor  = fields.Boolean(string='Es asesor de venta')
     is_laboratory  = fields.Boolean(string='Es laboratorio')
+
+class orderAcesorVenta(models.Model):
+    _inherit= 'sale.order'
+
+    advisor  = fields.Many2one(comodel_name='res.partner',inverse_name='id',domain="[('is_advisor','=','1')]" ,string='Asesor de venta')
+    
 
 
 

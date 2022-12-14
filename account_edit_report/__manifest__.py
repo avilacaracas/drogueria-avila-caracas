@@ -20,14 +20,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','account'],
+    'depends': ['base','account','sale'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/account_move_view.xml',
-        'views/reporte.xml'
+        'views/reporte.xml',
+        'views/insert_tree.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

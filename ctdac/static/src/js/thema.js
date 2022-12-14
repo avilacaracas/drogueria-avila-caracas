@@ -210,6 +210,41 @@ odoo.define('ctdac.Thema', function (require) {
     listBox2.change(_changemuniciopio);
 
 
+    // -------------------------------------------------------------------------------->><<-------------------------------------------------------------------------------- 
+
+
+    $("#btn-asignar").click(function(){
+    let client_invoce = $("#client_invoce").val()
+    let order_id_a = $("#order_id_a").val()
+    let user_id_a = $("#user_id_a").val()
+    if(client_invoce === user_id_a ){
+            alert('Se debe selecionar un Cliente a facturar')
+            return false;
+        }
+    let rest 
+    let resp =  prompt('Para confirmar con el cambio de cliente por favor escriba la palabra "SI"');
+        
+        if(resp.toUpperCase() === 'SI'){
+            ajax.jsonRpc('/asignacion_cliente', 'call', {
+                method: 'get',
+                args: [{
+                    'user':user_id_a,
+                    'order_id': order_id_a,
+                    'client_invoce': client_invoce,
+                }],
+            }).then(function (data) {
+                if(data == 'ok'){
+                    alert('¡Exito!.Se procesaron los cambio')
+                    window.location.href = "/";
+                }else{
+                    alert('Comuniquese con el Administrador del sistema')   
+                }
+            });
+
+        }else {
+            alert('No se puede hacer el cambio')
+        }
+    })
     
     });
 

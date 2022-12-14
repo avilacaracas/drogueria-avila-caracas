@@ -49,7 +49,7 @@
                                     <li class="" style="list-style:none;"><b>Vencimiento: </b><span t-if="o.invoice_date_due != ''" t-field="o.invoice_date_due"/></li>
                                     <li class="" style="list-style:none;"><b>Orden de compra: </b><span t-if="o.invoice_origin != ''" t-field="o.invoice_origin"/></li>
                                     <li class="" style="list-style:none;"><b>SICM: </b><span t-if="o.partner_id.codsicm != ''" t-field="o.partner_id.codsicm"/></li>
-                                    <li class="" style="list-style:none;"><b>Vendedor: </b><span t-if="o.invoice_partner_display_name != ''" t-field="o.invoice_partner_display_name"/></li>
+                                    <li class="" style="list-style:none;"><b>Vendedor: </b><span t-if="o.advisor.name != ''" t-field="o.advisor.name"/></li>
                                 </ul>
 
 

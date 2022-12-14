@@ -1,24 +1,70 @@
 
 <odoo>
-    <!-- <template id="product_price_perm"  inherit_id="website_sale.products_item"  name="Product Description">
-        <xpath expr="//form[hasclass('oe_product_cart')]" position="replace">
-            <div class="product_price mb-1" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
-                <span class="h5" t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
-                <t t-if="is_connected">
-                    <del t-attf-class="text-danger ml-1 h6 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
-                    <span itemprop="price" style="display:none;" t-esc="combination_info['price']" />
-                    <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name" />
-                </t>
-            </div> 
+    <template id="product_payment_perm"  inherit_id="website_sale.confirmation"  name="confirmation Description">
+        <xpath expr="//div[hasclass('oe_cart')]/div" position="before">
+            <t t-set="is_advisor_user" t-value="user_id.partner_id.is_advisor"/>
+            <t t-set="is_advisor_order" t-value="order.partner_id.is_advisor"/>
+                <t t-if="is_advisor_user and is_advisor_order">
+                    
+                    <div class="card">
+                        <div class="card-body" id="">
+                            <form>
+                                <div class="form-group">
+                                    <input type="hidden" name="user_id_a" id="user_id_a"  t-att-value="user_id.partner_id.id" />
+                                    <input type="hidden" name="order_id_a" id="order_id_a"  t-att-value="order.id"/>
+                                    <!-- <input type="text" name="ss" id="ss"/> -->
+
+                                    <label for="client_invoce" class="form-label">Cliente A facturar</label>
+                                    <select class="custom-select" name="client_invoce" id="client_invoce">
+                                        <t t-foreach="request.env['res.partner'].sudo().search([])" t-as="obj">
+                                            <option t-att-value="obj.id" t-att-selected="obj.id == order.partner_id.id">
+                                                <t t-esc="obj.name" />
+                                            </option>
+                                        </t> 
+                                    </select>
+                                    <br/>
+                                    <br/>
+                                    <button type="button" class="btn btn-primary" id='btn-asignar'>
+                                        <span>Asignar cliente</span>
+                                        <i class="fa fa-chevron-right"/>
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!-- <t t-foreach="request.env['account_edit_report.notas_pagar'].sudo().search([])" t-as="obj">
+                              <span class=""><t t-esc="obj.cuenta"/></span>
+                              <span class=""><t t-esc="obj.banco.name"/></span>
+                              <span class=""><t t-esc="obj.numero"/>,</span>
+                              <br/>
+                          </t> -->
+
+                            <!-- <a class="float-right no-decoration" href="/shop/checkout"><i class="fa fa-edit"/> Edit</a>
+                            <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)" />
+                            <div>
+                                <b>Billing<t t-if="same_shipping and not only_services"> &amp; Shipping</t>: </b>
+                                <span t-esc="order.partner_id" t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/>
+                            </div> -->
+                            
+                        </div>
+                    </div>
+
+                    
+                 </t>
+                 
+            
         </xpath>
-    </template> -->
+    </template> 
 
     <template id="add_to_compared" inherit_id="website_sale.products_item" customize_show="True" name="Comparison List" priority="22">
+
+        
         <xpath expr="//a[hasclass('o_product_link')]" position="replace">
                 <t t-if="not user_id._is_public()">
                     <a class="o_product_link css_editable_mode_hidden" t-att-href="product_href"/>
 
                 </t>
+                
+                
         </xpath>
 
         
