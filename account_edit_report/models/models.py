@@ -86,6 +86,16 @@ class laboratorioStockMove(models.Model):
 
     laboratory = fields.Many2one(related='product_tmpl_id.laboratory')
 
+class laboratorioStockMove(models.Model):
+    _inherit="stock.move.line"
+
+    product_tmpl_id = fields.Many2one(
+        'product.template', 'Product Template',
+        related='product_id.product_tmpl_id',
+        help="Technical: used in views")
+
+    laboratory = fields.Many2one(related='product_tmpl_id.laboratory')
+
 
 
 
