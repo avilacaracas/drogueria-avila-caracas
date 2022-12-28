@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-<!-- <template id="external_layout_bold_ksp" inherit_id="web.external_layout_standard">
-    <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']/div" position="replace">
-        <div class="row">
-                <div class="col-3 mb4">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
-                </div>
-                <div class="col-6 text-center" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
-                <div class="3">
-                    <strong>RIF: </strong><span t-field="company.company_registry"/>
-                    <br/>
-                    <span class="text-center">
-                      Forma libre
-                    </span>
-                    <br/><strong>Numero de Control: </strong><span t-field="o.l10n_ve_document_number"/>
-                </div>
-            </div>
+<template id="report_inventory_laboratory" inherit_id="stock.report_inventory">
+    <xpath expr="//table[@class='table table-sm']" position="replace">
+        
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th groups="stock.group_stock_multi_locations"><strong>Localización</strong></th>
+                    <th><strong>Producto</strong></th> 
+                    <th><strong>laboratorios</strong></th> 
+                    <th groups="stock.group_production_lot"><strong>Número Lote/Serie </strong></th>
+                    <th groups="stock.group_tracking_lot"><strong>Paquetes</strong></th>
+                    <th class="text-right"><strong>Cantidad disponible</strong></th>
+                    <th class="text-right"><strong>Cantidad a mano</strong></th>
+                    <th class="text-right"><strong>Cantidad contada</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="locations" t-as="location">
+                    <tr groups="stock.group_stock_multi_locations">
+                        <td colspan="2"><strong t-esc="location.display_name"/></td>
+                        <td groups="stock.group_production_lot"></td>
+                        <td groups="stock.group_tracking_lot"></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr t-foreach="docs.filtered(lambda quant: quant.location_id.id == location.id)" t-as="line">
+                        <td groups="stock.group_stock_multi_locations"></td>
+                        <td><span t-field="line.product_id"/></td>
+                        <td><span t-field="line.laboratory"/></td>
+                        <td groups="stock.group_production_lot"><span t-field="line.lot_id"/></td>
+                        <td groups="stock.group_tracking_lot"><span t-field="line.package_id"/></td>
+                        <td class="text-right"><span t-field="line.available_quantity"/> <span t-field="line.product_uom_id" groups="uom.group_uom"/></td>
+                        <td class="text-right"><span t-field="line.quantity"/> <span t-field="line.product_uom_id" groups="uom.group_uom"/></td>
+                        <td class="text-right">
+                            <!-- If 0, then leave blank so users have space to write a number -->
+                            <t t-if="line.inventory_quantity == 0"><span></span></t>
+                            <t t-else=""><span t-field="line.inventory_quantity"/></t>
+                            <span t-field="line.product_uom_id" groups="uom.group_uom"/>
+                        </td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
         
     </xpath>
-</template> -->
+</template>
 
     <template
         id="report_invoice_document_comments"

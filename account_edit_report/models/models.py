@@ -75,5 +75,17 @@ class bankReference(models.Model):
 
     _sql_constraints = [('name', 'unique(name)', 'El Numero de Referencia debe ser unico'),]
 
+class laboratoryQuant(models.Model):
+
+    _inherit= 'stock.quant'
+
+    laboratory = fields.Many2one(related='product_tmpl_id.laboratory')
+
+class laboratorioStockMove(models.Model):
+    _inherit="stock.move"
+
+    laboratory = fields.Many2one(related='product_tmpl_id.laboratory')
+
+
 
 
