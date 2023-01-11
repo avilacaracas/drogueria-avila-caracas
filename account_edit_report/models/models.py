@@ -46,7 +46,8 @@ class datos_computados_convercion(models.Model):
         rates=  self.env['res.currency.rate'].sudo().search([('currency_id','=',int(uds.id)),('name','=',self.invoice_date)])
         self.usd = rates.inverse_company_rate
         
-        self.totalusd = round(self.amount_residual * rates.rate)
+        self.totalusd = round(self.amount_residual * rates.rate, 2)
+      
        
 
 

@@ -29,6 +29,7 @@
         'views/account_move_view.xml',
         'views/reporte.xml',
         'views/insert_tree.xml',
+        'views/avisor_sale_include.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
