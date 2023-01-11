@@ -143,8 +143,8 @@
                                                         <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto;" >
                                                         <t t-foreach="lines" t-as="line">
 
-                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0" t-esc="(line.price_unit*catidad)/line.tax_ids.amount"/>
-                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 " t-esc="line.price_unit*catidad"/>
+                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0" t-esc="round((line.price_unit*catidad)/line.tax_ids.amount,2)"/>
+                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 " t-esc="round(line.price_unit*catidad,2)"/>
 
                                                             </t>
                                                         
