@@ -1,7 +1,7 @@
 .o_form_view .o_notebook > .o_notebook_headers {
     margin-left: -16px;
     margin-right: -16px;
-    border-bottom: 1px solid #a8cf45 !important;
+    border-bottom: 1px solid #4F7AFF !important;
 }
 .text-info{
     color: #444B5A !important;
@@ -14,7 +14,7 @@
     margin-bottom: 0;
 }
 .nav-tabs .nav-link {
-    border: 1px solid #a8cf45;
+    border: 1px solid #4F7AFF;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom: 1px solid!important;
@@ -25,8 +25,8 @@
     height:50px;
 }
 .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs > .nav-item > .nav-link.active, .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs > .nav-item > .nav-link.active:hover, .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs > .nav-item > .nav-link.active:focus, .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs > .nav-item > .nav-link.active:active {
-    color: #b4e6d0;
-    border-top-color: #57a796;
+    color: #4F7AFF;
+    border-top-color: #002642;
     border-radius: 5px 5px 0px 0px;
 }
 
@@ -131,11 +131,11 @@ background: $bg_white !important;
 }
 
 .o_MessagingMenu_counter {
-    background-color: #a8cf45;
+    background-color: #4F7AFF;
     color: #fff !important;
 }
 .o_mail_systray_item .o_notification_counter {
-    background: #a8cf45 !important;
+    background: #4F7AFF !important;
 }
 
 .o_control_panel {
@@ -239,17 +239,17 @@ background: $bg_white !important;
 .btn-primary:hover {
     color: #fff !important;
     background-color: $primary_hover !important;
-    border-color: #57a796 !important;
+    border-color: #0c347e !important;
 }
 .btn-primary:active {
     color: #fff !important;
-    background-color: #57a796 !important;
+    background-color: #002642 !important;
     border-color: #4053ad !important;
 }
 .btn-check:focus+.btn-primary, .btn-primary:focus {
     color: #fff;
-    background-color: #57a796 !important;
-    border-color: #346359 !important;
+    background-color: #0c347e !important;
+    border-color: #002642 !important;
     -webkit-box-shadow: 0 0 0 .15rem rgba(111,132,234,.5) !important;
     box-shadow: 0 0 0 .15rem rgba(111,132,234,.5) !important;
 }
@@ -352,20 +352,20 @@ button[name="action_uninstall"]:focus {
 }
 
 .o_statusbar_status .o_arrow_button.btn-secondary {
-    border: solid 1px #a8cf45 !important;
-    color: #a8cf45 !important;
+    border: solid 1px #4F7AFF !important;
+    color: #4F7AFF !important;
     background-color: #fff !important;
 }
 .o_statusbar_status .o_arrow_button.btn-secondary:hover:after {
     border-color: #fff !important;
 }
 .o_statusbar_status .o_arrow_button.btn-primary {
-    border: solid 1px #a8cf45 !important;
+    border: solid 1px #4F7AFF !important;
     color: #fff !important;
 }
 .o_cp_bottom_right .btn-secondary {
     background: #fff;
-    border-color: #5c897b !important;
+    border-color: #20488f !important;
     margin-right: 5px !important;
     padding : 6px 8px !important;
 }
@@ -494,7 +494,7 @@ th.o_list_record_selector {
   left: 9px;
   width: 6px;
   height: 14px;
-  border: solid #0079bf;
+  border: solid #2a6e96;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -564,8 +564,10 @@ th.o_list_record_selector {
 
 .custom-control-input:checked ~ .custom-control-label::before {
     color: #ffffff;
-    background-color: #a8cf45;
-    border-color: #a8cf45;
+    background-color: #4F7AFF;
+
+
+    border-color: #4F7AFF;
 }
 .custom-control.custom-checkbox .custom-control-input:not(:checked):not(:indeterminate) ~ .custom-control-label:before {
     background: none;
@@ -611,7 +613,7 @@ th.o_list_record_selector {
     min-width: 650px;
     max-width: initial;
     min-height: 330px;
-    border: 1px solid #a8cf45;
+    border: 1px solid #4F7AFF;
     box-shadow: none !important;
     background: white;
     margin: 4.8px auto;
@@ -745,7 +747,7 @@ i.o_PartnerImStatusIcon_outerBackground.fa.fa-circle.fa-stack-1x {
     color: #fff !important;
 }
 .o_ChatWindowHeader {
-    background-color: #a8cf45;
+    background-color: #4F7AFF;
     color: white !important;
 }
 //Chatter mini ends
@@ -863,15 +865,15 @@ select {
     pointer-events: none;
 }
 .o_input {
-    border: solid 1px #a8cf45 !important;
+    border: solid 1px #4F7AFF !important;
     color: #8aa56a !important;
 }
 .o_form_view .oe_button_box .btn.oe_stat_button > .o_stat_info .o_stat_value,
 .o_form_view .oe_button_box .btn.oe_stat_button > span .o_stat_value {
-    color: #a8cf45;
+    color: #4F7AFF;
 }
 .o_form_view .oe_button_box .oe_stat_button .o_button_icon {
-    color: #a8cf45;
+    color: #4F7AFF;
 }
 //form end
 
@@ -1178,17 +1180,17 @@ select, input {
 .o_hr_attendance_sign_in_out_icon.fa-sign-in:hover {
     color: #fff !important;
     background-color: $primary_hover !important;
-    border-color: #57a796 !important;
+    border-color: #4f7aff !important;
 }
 .o_hr_attendance_sign_in_out_icon.fa-sign-in:active {
     color: #fff !important;
-    background-color: #57a796 !important;
+    background-color: #0c347e !important;
     border-color: #4053ad !important;
 }
 .o_hr_attendance_sign_in_out_icon.fa-sign-in:focus {
     color: #fff;
     background-color: #485ec4 !important;
-    border-color: #57a796 !important;
+    border-color: #002642 !important;
     -webkit-box-shadow: 0 0 0 .15rem rgba(111,132,234,.5) !important;
     box-shadow: 0 0 0 .15rem rgba(111,132,234,.5) !important;
 }
@@ -1269,7 +1271,7 @@ select, input {
 
 //badges starts
 .badge-primary {
-    background-color: #a8cf45 !important;
+    background-color: #4F7AFF !important;
 }
 .badge-secondary {
   background-color: #74788d;
@@ -1370,7 +1372,7 @@ div.o_boolean_toggle.custom-control.custom-checkbox > label.custom-control-label
     top: 1px;
 }
 .o_kanban_view.o_kanban_dashboard.o_hr_recruitment_kanban .ribbon span {
-    background-color: #a8cf45;
+    background-color: #4F7AFF;
 }
 .o_kanban_view.o_kanban_dashboard.o_hr_recruitment_kanban.o_kanban_ungrouped .o_kanban_record:not(.o_kanban_ghost) {
     height: 197px;
@@ -1388,14 +1390,14 @@ div.o_boolean_toggle.custom-control.custom-checkbox > label.custom-control-label
     border-radius: 0 0 5px 5px;
 }
 .wysiwyg_iframe, .note-editor {
-//     border: 1px solid #a8cf4540 !important;
+//     border: 1px solid #4F7AFF40 !important;
     border-radius: 5px;
 }
 //note editor ends
 
 //progress starts
 .oe_kanban_content .progress .progress-bar {
-    background-color: #a8cf45;
+    background-color: #4F7AFF;
 }
 .progress-bar.bg-muted-full {
     background-color: #dee2e6;
@@ -1559,7 +1561,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget{
 
 .o_home_menu_background {
 
-    background: linear-gradient(to bottom left,#a8cf45 ,#57a796,#346359 ) !important;
+    background: linear-gradient(to bottom left,#4F7AFF ,#131b2a  ) !important;
     background-size: cover;
     
 }
@@ -1589,7 +1591,7 @@ div.o_input > .o_input {
 
 .o_form_view .o_form_uri {
     display: inline-block;
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
 }
 
 .o_search_panel .list-group-item .o_search_panel_label_title{
@@ -1603,11 +1605,11 @@ div.o_input > .o_input {
 }
 
 .o_NotificationGroup_date{
-    color: #a8cf45;
+    color: #4F7AFF;
 }
 
 .o_ThreadPreview_date{
-    color: #a8cf45;
+    color: #4F7AFF;
 }
 
 .timesheet-timer button.btn_start_timer {
@@ -1625,59 +1627,59 @@ div.o_input > .o_input {
 
 
 .o_account_reports_page .account_report_line_name a {
-    color: #a8cf45;
+    color: #4F7AFF;
 }
 
 .o_list_view .o_list_table.o_list_table_grouped > tbody > tr.o_group_header.o_group_has_content:hover{
-    color: #a8cf45;
+    color: #4F7AFF;
 }
 
 .o_list_view .o_list_table.o_list_table_grouped > tbody > tr.o_group_header.o_group_has_content.o_group_open:focus{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
 }
 
 .o_list_view .o_list_table.o_list_table_grouped > tbody > tr.o_group_header.o_group_has_content.o_group_open:hover{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
 }
 
 .o_list_view .o_list_table.o_list_table_grouped > tbody > tr.o_group_header.o_group_has_content.o_group_open:active{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
 }
 
 .o_list_view .o_list_table.o_list_table_grouped > tbody > tr.o_group_header.o_group_has_content.o_group_open:visited{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
 }
 
 .o_list_view .o_list_table.o_list_table_grouped > tbody > tr.o_group_header.o_group_has_content.o_group_open:focus-within{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
 }
 
 .o_list_view .o_list_table.o_list_table_grouped > tbody > tr.o_group_header.o_group_has_content.o_group_open:target{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
 }
 
 
 .o_list_view .o_list_table.o_list_table_grouped > tbody > tr.o_group_header.o_group_has_content{
 
     &:hover{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
     }
     &:visited{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
     }
     &:focus{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
     }
     &:focus-within{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
     }
     &:active{
-    color: #a8cf45 !important;
+    color: #4F7AFF !important;
     }
 }
 
 .o_Discuss .o_Message .o_Message_prettyBody p a {
-    background: #a8cf45 !important;
+    background: #4F7AFF !important;
     color: white;
 }
 @media (max-width: 1371px)
@@ -1857,7 +1859,7 @@ nav.o_main_navbar {
 }
 
 .badge {
-    border: 1px solid #a8cf45;
+    border: 1px solid #4F7AFF;
 }
 
 @media (max-width: 480px){
@@ -1869,7 +1871,7 @@ nav.o_main_navbar {
 
 
 .o_MobileMessagingNavbar_tab.o-active {
-    color: #a8cf45;
+    color: #4F7AFF;
 }
 //Responsive ends
 

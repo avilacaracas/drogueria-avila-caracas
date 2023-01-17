@@ -1,4 +1,4 @@
-odoo.define('code_backend_theme_enterprise.graph', function (require) {
+odoo.define('thema_priopio__dac.graph', function (require) {
     "use strict";
 
     var GraphRenderer = require('web.GraphRenderer');

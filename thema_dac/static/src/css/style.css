@@ -579,7 +579,7 @@ template {
   position: relative !important;
   top: 0px !important;
   width: 100%;
-  box-shadow: #57a595 0px 1px 8px 0px !important;
+  box-shadow: #002642 0px 1px 8px 0px !important;
   min-height: 10vh;
   
 }
@@ -596,7 +596,7 @@ template {
 
 .navbar .navbar-brand {
   min-width: 0% !important;
-  color: #57A595;
+  color: #002642;
   font-size: 400px !important;
   padding: 0;
   font-weight: 900;
@@ -4019,13 +4019,13 @@ input#amount1 {
    }
 
 .btn-secondary{
-    background-color: #57A595;
+    background-color: #4F7AFF;
     
     }
 .btn-primary {
-    background-color: #57A595 !important;
-    background-color: #57A595 !important;
-    border-color: #57A595 !important;
+    background-color: #4F7AFF !important;
+    background-color: #4F7AFF !important;
+    border-color: #4F7AFF !important;
     }
 .product_view{
     margin-top: 30px;
@@ -4078,11 +4078,11 @@ input#amount1 {
 .o_colored_level
 span
 a{
-  background-color: #57A595 !important;
+  background-color: #002642 !important;
 }
 
 .bcolor{
-  background-color: #57A595 !important;
+  background-color: #002642 !important;
 }
 
 .card:hover img {
@@ -4097,7 +4097,7 @@ a{
 
 .card:hover .card-footer  {
   
-   background-color: #57A595 !important; 
+   background-color: #002642 !important; 
 }
 
 .card:hover .card-footer a  {
@@ -4107,7 +4107,7 @@ a{
 }
 
 .bthov{
-  color: #57A595 !important; 
+  color: #002642 !important; 
 }
 
 .bthov:hover {
@@ -4144,7 +4144,7 @@ margin:auto;
 }
 
 .seltMapa span{
-  color: #57A595 !important; 
+  color: #002642 !important; 
   font-weight: bold;
 }
 
@@ -4218,7 +4218,7 @@ margin:auto;
  }
 
  .foncontForm .card button, [type="submit"] {
-  background-color: #57A595;
+  background-color: #002642;
   width: 100%;
      height: 100%;
   

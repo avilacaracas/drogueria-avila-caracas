@@ -22,11 +22,11 @@ body.bg-100 {
     width: 450px;
 }
 a {
-    color: #57a796;
+    color: #4f7aff;
     text-decoration: none;
 }
 a:hover {
-    color: #3c7267;
+    color: #002642;
     text-decoration: underline;
 }
 .alert-info {
@@ -46,8 +46,8 @@ a:hover {
 //login button starts
 .btn-primary {
     color: #fff;
-    background-color: #57a796;
-    border-color: #57a796;
+    background-color: #002642;
+    border-color: #002642;
 }
 .btn-primary:hover {
     color: #fff;
@@ -59,13 +59,13 @@ a:hover {
 .btn-primary.active,.btn-primary:active,
 .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #57a796 !important;
-    border-color: #57a796 !important;
+    background-color: #002642 !important;
+    border-color: #002642 !important;
 }
 .btn-check:focus+.btn-primary, .btn-primary:focus {
     color: #fff;
-    background-color: #3c7267 !important;
-    border-color: #3c7267 !important;
+    background-color: #0c347e !important;
+    border-color: #0c347e !important;
     -webkit-box-shadow: 0 0 0 .15rem rgba(111,132,234,.5) !important;
     box-shadow: 0 0 0 .15rem rgba(111,132,234,.5) !important;
 }
