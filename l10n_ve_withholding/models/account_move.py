@@ -113,9 +113,9 @@ class AccountMove(models.Model):
             self.env.context.invoice_company = self.company_id
         except Exception:
             pass
-        return super().get_taxes_values()
+        return super().get_taxes_values() 
 
-    def _post(self, soft=True):
+    def _post(self, soft=True): 
         super(AccountMove, self)._post(soft)
         for rec in self:
             if (rec.state == 'posted' and rec.\
