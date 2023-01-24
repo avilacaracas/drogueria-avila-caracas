@@ -174,7 +174,7 @@
                                             <td name="account_invoice_line_name"><span t-field="line.product_id.name" t-options="{'widget': 'text'}"/></td>
                                             <td >
                                                 <span t-field="line.quantity"/>
-                                                <span t-field="line.product_uom_id"  groups="uom.group_uom"/>
+                                                
                                             </td>
                                             <td>
                                                 <span class="text-nowrap" t-field="line.price_unit"/>
