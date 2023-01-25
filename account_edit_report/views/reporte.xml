@@ -136,8 +136,9 @@
                                                             </t>
                                                         
                                                         </td>
-                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;"><span t-if="objline.lot_id != ''" t-field="objline.lot_id.name"/></td>
-                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto;" t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                                        <td style="border:none; block-size: auto;text-align: right; writing-mode: horizontal-tb; width:10%; overflow: auto;">
+                                                        <span t-if="objline.lot_id != ''" t-field="objline.lot_id.name"/></td>
+                                                        <td style="border:none; block-size: auto; text-align: right;writing-mode: horizontal-tb; width:20%; overflow: auto;" t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                                             <t t-foreach="lines" t-as="line">
                                                             <!-- <span t-if="line.product_id == objline.product_id" t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> -->
                                                             <span t-if="line.product_id == objline.product_id" t-field="line.tax_ids"/>
@@ -146,11 +147,11 @@
 
                                                         <!-- lambda x: (x.description or x.name), ) -->
 
-                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto;" >
+                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto; text-align:right;" >
                                                         <t t-foreach="lines" t-as="line">
 
-                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
-                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 " t-esc="'%.2f'% (line.price_unit*catidad)"/>
+                                                                <span style="text-align:right;  "  t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
+                                                                <span style="text-align:right; " t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 " t-esc="'%.2f'% (line.price_unit*catidad)"/>
 
                                                             </t>
                                                         
@@ -306,20 +307,18 @@
                                 </div>
                                 <br />
                                 <footer style="padding-bottom: 50px;">
-                                    <p>
-                                    Esta factura vence el: <b class="m-0" t-field="o.invoice_date_due"/>, después de esa fecha usted deberá pagar
-                                    la cantidad de USD$ <span t-field="o.totalusd"/> a la tasa publicada por el banco central de venezuela
-                                    en su portal <a
-                            href="https://www.bcv.org.ve/"
-                        >www.bcv.org.ve</a>, de acuerdo a las Normativas y Disposicione
-                                    Legales Vigente.el factor de cambio de esta fectura es de Bs. <span
-                            t-field="o.usd"
-                        /> /USD$ y debera ser
-                                    pagada
-                                    al cambio del dia despues de su vencimiento.
-                                    </p>
+                                    <div> 
+                                        <p>Esta factura vence el: <b class="m-0" t-field="o.invoice_date_due"/>,
+                                            después de esa fecha usted deberá pagar la cantidad de USD$ <span t-field="o.totalusd"/>
+                                            a la tasa publicada por el banco central de Venezuela en su portal <a href="https://www.bcv.org.ve/">www.bcv.org.ve</a>, 
+                                            de acuerdo a las Normativas y Disposiciones Legales Vigente. El factor de cambio de esta factura es de Bs. <span t-field="o.usd"/>
+                                            /USD$ y deberá ser pagada al cambio del día después de su vencimiento.
+                                        </p> 
+                                </div>
                                 </footer>
                                 </div>
+
+                                
 
                             </div>
                         </div>
