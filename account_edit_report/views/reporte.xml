@@ -31,7 +31,7 @@
                                         <li class="" style="list-style:none;">
                                         <!-- Horizontal under breakpoint -->
                                         <ul class="list-group list-group-horizontal">
-                                            <li style="display:inline; display:inline; list-style:none; padding-left:10px;"><b>Ciudad: </b><span t-if="o.partner_id.city != ''" t-field="o.partner_id.city"/></li>
+                                            <li style="display:inline; display:inline; list-style:none;"><b>Ciudad: </b><span t-if="o.partner_id.city != ''" t-field="o.partner_id.city"/></li>
                                             <li style="display:inline; list-style:none; padding-left:10px;"><b>Estados: </b><span t-if="o.partner_id.state_id.name != ''" t-field="o.partner_id.state_id.name"/></li>
                                             <li style="display:inline; list-style:none; padding-left:10px;"><b>Codigo Postal: </b><span t-if="o.partner_id.zip != ''" t-field="o.partner_id.zip"/></li>
                                         </ul>
