@@ -16,9 +16,7 @@
                                     <h5> <b>Factura a nombre de:</b></h5>
                                     <ul class="">
                                         <li class="" style="list-style:none;"><b>Cliente: </b><span t-if="o.partner_id.name != '/'" t-field="o.partner_id"/></li>
-                                        <li class="" style="list-style:none;"><b>R.I.F: </b>
-                                        <span t-if="o.partner_id.l10n_latam_identification_type_id != ''" t-field="o.partner_id.l10n_latam_identification_type_id.l10n_ve_code"/>-
-                                        <span t-if="o.partner_id.vat != ''" t-field="o.partner_id.vat"/></li>
+                                        <li class="" style="list-style:none;"><b>R.I.F: </b><span t-if="o.partner_id.vat != ''" t-field="o.partner_id.vat"/></li>
                                         <li class="" style="list-style:none;"><b>Telefonos: </b><span t-if="o.partner_id.phone != ''" t-field="o.partner_id.phone"/> / <span t-if="o.partner_id.mobile != ''" t-field="o.partner_id.mobile"/></li>
                                         <li class="" style="list-style:none;"><b>Direccion: </b>
                                             <t t-if="o.partner_id.street != ''">
@@ -52,9 +50,7 @@
                                         <li class="" style="list-style:none;"><b>SICM: </b><span t-if="o.partner_id.codsicm != ''" t-field="o.partner_id.codsicm"/></li>
                                         <li class="" style="list-style:none;"><b>Vendedor: </b><span t-if="o.advisor.name != ''" t-field="o.advisor.name"/></li>
                                     </ul>
- 
 
- 
 
 
                                     </div>
@@ -86,13 +82,13 @@
                                 <t t-set="current_subtotal" t-value="0"/>
                                 <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
                                 <t t-if="o.invoice_origin != False">
-                                    <t  t-set="stock_move" t-value="request.env['stock.move'].sudo().search([('origin','=',o.invoice_origin)],order='name')"/>
+                                    <t  t-set="stock_move" t-value="request.env['stock.move'].sudo().search([('origin','=',o.invoice_origin)])"/>
 
                                     
 
                                     <t t-foreach="stock_move" t-as="obj">
                                             <t t-set="stock_move_line" t-value="request.env['stock.move.line'].sudo().search([('move_id','=',obj.id)])"/>
-                                            <t t-foreach="stock_move_line.sorted(key=lambda x: x.product_id.name )" t-as="objline">
+                                            <t t-foreach="stock_move_line" t-as="objline">
 
                                             <!-- ######################################################################################### -->
 
@@ -104,19 +100,18 @@
                                                         
                                                         <t t-if="objline.qty_done > 0">
                                                             <t t-set="catidad" t-value="objline.qty_done"/>
-                                                            <span t-esc="int(objline.qty_done)"/>
-                                                             
+                                                            <span t-field="objline.qty_done"/>
                                                         
                                                         </t>
                                                         <t t-else="">
                                                             <t t-if="objline.product_qty > 0">
                                                                 <t t-set="catidad" t-value="objline.product_qty"/>
-                                                                <span  t-esc="int(objline.product_qty)"/>
+                                                                <span  t-field="objline.product_qty"/>
                                                             </t>
                                                             <t t-else="">
                                                                 <t t-if="objline.product_uom_qty > 0">
                                                                     <t t-set="catidad" t-value="objline.product_uom_qty"/>
-                                                                    <span  t-esc="int(objline.product_uom_qty)"/>
+                                                                    <span  t-field="objline.product_uom_qty"/>
                                                                 </t>
                                                                 <t t-else="">
                                                                     <t t-set="catidad" t-value="0"/>
@@ -148,8 +143,8 @@
                                                         <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto;" >
                                                         <t t-foreach="lines" t-as="line">
 
-                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
-                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 " t-esc="'%.2f'% (line.price_unit*catidad)"/>
+                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0" t-esc="round((line.price_unit*catidad)/line.tax_ids.amount,2)"/>
+                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 " t-esc="round(line.price_unit*catidad,2)"/>
 
                                                             </t>
                                                         
@@ -179,7 +174,7 @@
                                             <td name="account_invoice_line_name"><span t-field="line.product_id.name" t-options="{'widget': 'text'}"/></td>
                                             <td >
                                                 <span t-field="line.quantity"/>
-                                                <!-- <span t-field="line.product_uom_id"  groups="uom.group_uom"/> -->
+                                                
                                             </td>
                                             <td>
                                                 <span class="text-nowrap" t-field="line.price_unit"/>
@@ -190,7 +185,7 @@
                                                 <span class="text-nowrap" t-field="line.discount"/>
                                             </td>
                                             <td>
-                                                <span t-esc="', '.join(map(lambda x: (x.name or x.description), line.tax_ids))" id="line_tax_ids"/>
+                                                <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/>
                                             </td>
                                             <td class=" o_price_total">
                                                 <span class="text-nowrap" t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
