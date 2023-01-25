@@ -90,7 +90,8 @@
 
                                     
 
-                                    <t t-foreach="stock_move.sorted(key=lambda x: x.name. lower())" t-as="obj">
+                                    <t t-foreach="stock_move.sorted(key=lambda x: (lower(x.name)),reverse=False)" t-as="obj">
+                                    
                                             <t t-set="stock_move_line" t-value="request.env['stock.move.line'].sudo().search([('move_id','=',obj.id)])"/>
                                             <t t-foreach="stock_move_line" t-as="objline">
 
