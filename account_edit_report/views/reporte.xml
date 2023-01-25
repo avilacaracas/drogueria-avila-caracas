@@ -62,7 +62,7 @@
                                 </div>
                                 <br />
 
-                                <table class="" style=" width: 100%; overflow: auto; block-size: 650px; writing-mode: horizontal-tb; display: block; min-height: 650px;" name="invoice_line_table">
+                                <table class="" style=" width: 100%; overflow: auto; block-size: 680px; writing-mode: horizontal-tb; display: block; min-height: 680px;" name="invoice_line_table">
                             <thead class="border border-dark">
                                 <tr>
                                     <th name="th_codigo" style="width: 10%; overflow: auto;">Codigo</th>
