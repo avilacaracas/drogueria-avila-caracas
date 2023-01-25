@@ -86,13 +86,13 @@
                                 <t t-set="current_subtotal" t-value="0"/>
                                 <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
                                 <t t-if="o.invoice_origin != False">
-                                    <t  t-set="stock_move" t-value="request.env['stock.move'].sudo().search([('origin','=',o.invoice_origin)],order='name')"/>
+                                    <t  t-set="stock_move" t-value="request.env['stock.move'].sudo().search([('origin','=',o.invoice_origin)])"/>
 
                                     
 
-                                    <t t-foreach="stock_move" t-as="obj">
+                                    <t t-foreach="stock_move.sorted(key=lambda x: x.name. lower())" t-as="obj">
                                             <t t-set="stock_move_line" t-value="request.env['stock.move.line'].sudo().search([('move_id','=',obj.id)])"/>
-                                            <t t-foreach="stock_move_line.sorted(key=lambda x: x.product_id.name )" t-as="objline">
+                                            <t t-foreach="stock_move_line" t-as="objline">
 
                                             <!-- ######################################################################################### -->
 
