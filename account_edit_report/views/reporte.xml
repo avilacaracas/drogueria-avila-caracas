@@ -65,20 +65,20 @@
                                 <table class="" style=" width: 100%; overflow: auto; block-size: 680px; writing-mode: horizontal-tb; display: block; min-height: 680px;" name="invoice_line_table">
                             <thead class="border border-dark">
                                 <tr>
-                                    <th name="th_codigo" style="width: 10%; overflow: auto;">Codigo</th>
-                                    <th name="th_description" style="width: 50%; overflow: auto;" class="text-left"><span>Descripción</span></th>
-                                    <th name="th_quantity" style="width:5%; overflow: auto;"><span>Cant.</span></th>
-                                    <th name="th_priceunit" style="width: 10%; overflow: auto;"><span>Precio</span></th>
+                                    <th name="th_codigo" style="width: 10%; overflow: auto; ">Codigo</th>
+                                    <th name="th_description" style="width: 50%; overflow: auto;  " class="text-left"><span>Descripción</span></th>
+                                    <th name="th_quantity" style="width:5%; overflow: auto;text-align: right; "><span>Cant.</span></th>
+                                    <th name="th_priceunit" style="width: 10%; overflow: auto; text-align: right; "><span>Precio</span></th>
                                     <t t-if="o.invoice_origin != False">
-                                    <th style="width: 10%; overflow: auto;">Lote</th>
+                                    <th style="width: 10%; overflow: auto; text-align: right; ">Lote</th>
                                     </t> 
                                     <!-- <th name="th_price_unit" t-if="display_discount" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                         <span>Disc.%</span>
                                     </th> -->
-                                    <th name="th_taxes" style="width: 20%; overflow: auto;"><span>Imp</span></th>
+                                    <th name="th_taxes" style="width: 20%; overflow: auto; text-align: center;"><span>Imp</span></th>
                                     <th name="th_subtotal" style="width: 10%; overflow: auto;">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Total</span>
-                                        <span groups="account.group_show_line_subtotals_tax_included">Precio Total</span>
+                                        <span groups="account.group_show_line_subtotals_tax_included ">Precio Total</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -138,10 +138,10 @@
                                                         </td>
                                                         <td style="border:none; block-size: auto;text-align: right; writing-mode: horizontal-tb; width:10%; overflow: auto;">
                                                         <span t-if="objline.lot_id != ''" t-field="objline.lot_id.name"/></td>
-                                                        <td style="border:none; block-size: auto; text-align: right;writing-mode: horizontal-tb; width:20%; overflow: auto;" t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                                        <td style="border:none; block-size: auto; text-align: center; writing-mode: horizontal-tb; width:20%; overflow: auto;" >
                                                             <t t-foreach="lines" t-as="line">
                                                             <!-- <span t-if="line.product_id == objline.product_id" t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> -->
-                                                            <span t-if="line.product_id == objline.product_id" t-field="line.tax_ids"/>
+                                                            <span style="" t-if="line.product_id == objline.product_id" t-field="line.tax_ids"/>
                                                             </t>
                                                         </td>
 
