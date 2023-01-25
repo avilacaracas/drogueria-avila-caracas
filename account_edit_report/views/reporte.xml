@@ -86,7 +86,7 @@
                                 <t t-set="current_subtotal" t-value="0"/>
                                 <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
                                 <t t-if="o.invoice_origin != False">
-                                    <t  t-set="stock_move" t-value="request.env['stock.move'].sudo().search([('origin','=',o.invoice_origin)],order='name')"/>
+                                    <t  t-set="stock_move" t-value="request.env['stock.move'].sudo().search([('origin','=',o.invoice_origin)])"/>
 
                                     
 
