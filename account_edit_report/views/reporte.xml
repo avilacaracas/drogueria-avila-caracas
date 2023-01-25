@@ -128,7 +128,7 @@
                                                         </t>
                                                         
                                                         </td>
-                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;">
+                                                        <td style="border:none; text-align: right; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;">
                                                             <t t-foreach="lines" t-as="line">
 
                                                                 <span t-if="line.product_id == objline.product_id" t-field="line.price_unit"/>
@@ -136,9 +136,9 @@
                                                             </t>
                                                         
                                                         </td>
-                                                        <td style="border:none; block-size: auto;text-align: right; writing-mode: horizontal-tb; width:10%; overflow: auto;">
+                                                        <td style="border:none; block-size: auto;text-align:center; writing-mode: horizontal-tb; width:10%; overflow: auto;">
                                                         <span t-if="objline.lot_id != ''" t-field="objline.lot_id.name"/></td>
-                                                        <td style="border:none; block-size: auto; text-align: right;writing-mode: horizontal-tb; width:20%; overflow: auto;" t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                                        <td style="border:none; block-size: auto; text-align:center;writing-mode: horizontal-tb; width:20%; overflow: auto;" t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                                             <t t-foreach="lines" t-as="line">
                                                             <!-- <span t-if="line.product_id == objline.product_id" t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> -->
                                                             <span t-if="line.product_id == objline.product_id" t-field="line.tax_ids"/>
