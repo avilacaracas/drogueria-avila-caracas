@@ -46,7 +46,7 @@
                                     <!-- Some borders are removed -->
 
                                     <ul class="">
-                                        <li class="" style="list-style:none;"><b>emisión: </b><span t-if="o.invoice_date != ''" t-field="o.invoice_date"/></li>
+                                        <li class="" style="list-style:none;"><b>Emisión: </b><span t-if="o.invoice_date != ''" t-field="o.invoice_date"/></li>
                                         <li class="" style="list-style:none;"><b>Vencimiento: </b><span t-if="o.invoice_date_due != ''" t-field="o.invoice_date_due"/></li>
                                         <li class="" style="list-style:none;"><b>Orden de compra: </b><span t-if="o.invoice_origin != ''" t-field="o.invoice_origin"/></li>
                                         <li class="" style="list-style:none;"><b>SICM: </b><span t-if="o.partner_id.codsicm != ''" t-field="o.partner_id.codsicm"/></li>
@@ -78,7 +78,7 @@
                                     <th name="th_taxes" style="width: 20%; overflow: auto;"><span>Imp</span></th>
                                     <th name="th_subtotal" style="width: 10%; overflow: auto;">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Total</span>
-                                        <span groups="account.group_show_line_subtotals_tax_included">Total Price</span>
+                                        <span groups="account.group_show_line_subtotals_tax_included">Precio Total</span>
                                     </th>
                                 </tr>
                             </thead>
