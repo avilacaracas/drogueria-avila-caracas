@@ -55,6 +55,8 @@ class guidesMobilization(models.Model):
 
     # @api.model
     def crear_guia(self):
+        if self.factura.name == "":
+            raise UserError("error al crear Guia la misma no posee numero de factura")
         config = pdfkit.configuration(wkhtmltopdf= find_in_path('wkhtmltopdf'))
         if self.status == '1' or self.status == '6' or self.status == '9':
             url = "http://www.sicm.gob.ve/sicm.php?wsdl"
@@ -123,7 +125,7 @@ class guidesMobilization(models.Model):
                 
 
     def aprobar_guia(self):
-        config = pdfkit.configuration(wkhtmltopdf='/usr/local/bin/wkhtmltopdf')
+        config = pdfkit.configuration(wkhtmltopdf= find_in_path('wkhtmltopdf'))
         url = "http://www.sicm.gob.ve/sicm.php?wsdl"
         url_guia='http://www.sicm.gob.ve/g_4cguia.php?id_guia='
         cli= Client(url)
@@ -196,7 +198,8 @@ class guidesMobilization(models.Model):
             }
 
     def anular_guia(self):
-        config = pdfkit.configuration(wkhtmltopdf='/usr/local/bin/wkhtmltopdf')
+        config = pdfkit.configuration(wkhtmltopdf= find_in_path('wkhtmltopdf'))
+        # config = pdfkit.configuration(wkhtmltopdf='/usr/local/bin/wkhtmltopdf')
         if self.guia==False:
             self.write({"status":"4","pdf_guia":''})
             title = "Anulacion!"
@@ -218,29 +221,29 @@ class guidesMobilization(models.Model):
         credentials=self.env['guia_sicm.credentials'].search([('estatus', '=', True)])
         stGuia= cli.service.guia_status(credentials.code_segurity, self.guia)
         if stGuia != '0' :
-            if stGuia.split(';')[2]!='APR':
-                anular = cli.service.guia_anular(credentials.code_segurity, self.guia)
-                if anular != '0':
-                    pdf = pdfkit.from_url(url_guia+str(self.guia), str(self.guia)+'.pdf',configuration=config)
-                    with open(str(self.guia)+'.pdf', "rb") as pdf_file:
-                        encoded_string = base64.b64encode(pdf_file.read())   
+        # if stGuia.split(';')[2]!='APR':
+            anular = cli.service.guia_anular(credentials.code_segurity, self.guia)
+            if anular != '0':
+                pdf = pdfkit.from_url(url_guia+str(self.guia), str(self.guia)+'.pdf',configuration=config)
+                with open(str(self.guia)+'.pdf', "rb") as pdf_file:
+                    encoded_string = base64.b64encode(pdf_file.read())   
 
-                    remove(str(self.guia)+'.pdf')
-                    self.write({'status': '4','pdf_guia':encoded_string})
+                remove(str(self.guia)+'.pdf')
+                self.write({'status': '4','pdf_guia':encoded_string})
 
-                    title = "Anulacion!"
-                    message = "Guia "+ str(self.guia) +"Anulada!"
-                    return {
-                        'type': 'ir.actions.client',
-                        'tag': 'display_notification',
-                        'params': {
-                            'title': title,
-                            'message': message,
-                            'sticky': False,
-                            }
-                    } 
-            else:
-                raise UserError('no se puede anular la guia')
+                title = "Anulacion!"
+                message = "Guia "+ str(self.guia) +"Anulada!"
+                return {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': title,
+                        'message': message,
+                        'sticky': False,
+                        }
+                } 
+        # else:
+        #     raise UserError('no se puede anular la guia')
         else:
             self.write({"status":"4"})
             title = "Anulacion!"
