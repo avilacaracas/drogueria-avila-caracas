@@ -464,11 +464,27 @@ th.o_list_record_selector {
     background-color: #fff !important;
 }
 // Table End
-
+.o_data_cell .o_field_cell .o_list_number
+{
+    // background-color: #0c347e !important;
+}
 // Checkbox
 .custom-checkbox label {
   position: relative;
   cursor: pointer;
+}
+
+// o_field_monetary o_field_number o_input o_field_widget o_quick_editable{
+
+// }
+
+
+.o_list_view .o_list_table .o_data_row.o_selected_row > .o_data_cell:not(.o_readonly_modifier):not(.o_invisible_modifier) > .o_field_monetary input {
+    margin: 100px; 
+}
+.o_list_view .o_list_table .o_data_row.o_selected_row > .o_data_cell:not(.o_readonly_modifier):not(.o_invisible_modifier) > .o_field_monetary input {
+    width: 50px !important;
+    margin: 0 4px !important;
 }
 
 .custom-checkbox label:before {
@@ -865,8 +881,8 @@ select {
     pointer-events: none;
 }
 .o_input {
-    border: solid 1px #4F7AFF !important;
-    color: #8aa56a !important;
+    // border: solid 1px #4F7AFF !important;
+    color: #4F7AFF !important;
 }
 .o_form_view .oe_button_box .btn.oe_stat_button > .o_stat_info .o_stat_value,
 .o_form_view .oe_button_box .btn.oe_stat_button > span .o_stat_value {
@@ -1582,8 +1598,8 @@ div.dropdown-menu.bootstrap-datetimepicker-widget{
 }
 
 div.o_input > .o_input {
-	margin-bottom: 0 !important;
-	background: none;
+	// margin-bottom: 0 !important;
+	// background: none;
 }
 .o_input.p-0 {
 	padding-left: 3px !important;
