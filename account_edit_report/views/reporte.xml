@@ -31,7 +31,7 @@
                                         <li class="" style="list-style:none;">
                                         <!-- Horizontal under breakpoint -->
                                         <ul class="list-group list-group-horizontal">
-                                            <li style="display:inline; display:inline; list-style:none;"><b>Ciudad: </b><span t-if="o.partner_id.city != ''" t-field="o.partner_id.city"/></li>
+                                            <li style="display:inline; display:inline; list-style:none; padding-left:10px;"><b>Ciudad: </b><span t-if="o.partner_id.city != ''" t-field="o.partner_id.city"/></li>
                                             <li style="display:inline; list-style:none; padding-left:10px;"><b>Estados: </b><span t-if="o.partner_id.state_id.name != ''" t-field="o.partner_id.state_id.name"/></li>
                                             <li style="display:inline; list-style:none; padding-left:10px;"><b>Codigo Postal: </b><span t-if="o.partner_id.zip != ''" t-field="o.partner_id.zip"/></li>
                                         </ul>
@@ -46,7 +46,7 @@
                                     <!-- Some borders are removed -->
 
                                     <ul class="">
-                                        <li class="" style="list-style:none;"><b>Emisión: </b><span t-if="o.invoice_date != ''" t-field="o.invoice_date"/></li>
+                                        <li class="" style="list-style:none;"><b>emisión: </b><span t-if="o.invoice_date != ''" t-field="o.invoice_date"/></li>
                                         <li class="" style="list-style:none;"><b>Vencimiento: </b><span t-if="o.invoice_date_due != ''" t-field="o.invoice_date_due"/></li>
                                         <li class="" style="list-style:none;"><b>Orden de compra: </b><span t-if="o.invoice_origin != ''" t-field="o.invoice_origin"/></li>
                                         <li class="" style="list-style:none;"><b>SICM: </b><span t-if="o.partner_id.codsicm != ''" t-field="o.partner_id.codsicm"/></li>
@@ -62,23 +62,23 @@
                                 </div>
                                 <br />
 
-                                <table class="" style=" width: 100%; overflow: auto; block-size: 680px; writing-mode: horizontal-tb; display: block; min-height: 680px;" name="invoice_line_table">
+                                <table class="" style=" width: 100%; overflow: auto; block-size: 650px; writing-mode: horizontal-tb; display: block; min-height: 650px;" name="invoice_line_table">
                             <thead class="border border-dark">
                                 <tr>
-                                    <th name="th_codigo" style="width: 10%; overflow: auto; ">Codigo</th>
-                                    <th name="th_description" style="width: 50%; overflow: auto;  " class="text-left"><span>Descripción</span></th>
-                                    <th name="th_quantity" style="width:5%; overflow: auto;text-align: right; "><span>Cant.</span></th>
-                                    <th name="th_priceunit" style="width: 10%; overflow: auto; text-align: right; "><span>Precio</span></th>
+                                    <th name="th_codigo" style="width: 10%; overflow: auto;">Codigo</th>
+                                    <th name="th_description" style="width: 50%; overflow: auto;" class="text-left"><span>Descripción</span></th>
+                                    <th name="th_quantity" style="width:5%; overflow: auto;"><span>Cant.</span></th>
+                                    <th name="th_priceunit" style="width: 10%; overflow: auto;"><span>Precio</span></th>
                                     <t t-if="o.invoice_origin != False">
-                                    <th style="width: 10%; overflow: auto; text-align: right; ">Lote</th>
+                                    <th style="width: 10%; overflow: auto;">Lote</th>
                                     </t> 
                                     <!-- <th name="th_price_unit" t-if="display_discount" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                         <span>Disc.%</span>
                                     </th> -->
-                                    <th name="th_taxes" style="width: 20%; overflow: auto; text-align: center;"><span>Imp</span></th>
+                                    <th name="th_taxes" style="width: 20%; overflow: auto;"><span>Imp</span></th>
                                     <th name="th_subtotal" style="width: 10%; overflow: auto;">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Total</span>
-                                        <span groups="account.group_show_line_subtotals_tax_included ">Total</span>
+                                        <span groups="account.group_show_line_subtotals_tax_included">Total Price</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -86,14 +86,13 @@
                                 <t t-set="current_subtotal" t-value="0"/>
                                 <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
                                 <t t-if="o.invoice_origin != False">
-                                    <t  t-set="stock_move" t-value="request.env['stock.move'].sudo().search([('origin','=',o.invoice_origin)])"/>
+                                    <t  t-set="stock_move" t-value="request.env['stock.move'].sudo().search([('origin','=',o.invoice_origin)],order='name')"/>
 
                                     
 
-                                    <t t-foreach="stock_move.sorted(key=lambda x: (x.description_picking.lower()),reverse=False)" t-as="obj">
-                                    
+                                    <t t-foreach="stock_move" t-as="obj">
                                             <t t-set="stock_move_line" t-value="request.env['stock.move.line'].sudo().search([('move_id','=',obj.id)])"/>
-                                            <t t-foreach="stock_move_line" t-as="objline">
+                                            <t t-foreach="stock_move_line.sorted(key=lambda x: x.product_id.name )" t-as="objline">
 
                                             <!-- ######################################################################################### -->
 
@@ -101,11 +100,13 @@
                                                     <tr style="overflow: hidden;">
                                                         <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;"> <span  t-if="objline.product_id.default_code != ''" t-field="objline.product_id.default_code" /></td>
                                                         <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:50%; overflow: auto;"><span t-if="objline.product_id.name != ''" t-field="objline.product_id.name"/></td>
-                                                        <td style="text-align: right;border:none; block-size: auto; writing-mode: horizontal-tb; width:5%; overflow: auto;" >
+                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:5%; overflow: auto;" >
                                                         
                                                         <t t-if="objline.qty_done > 0">
                                                             <t t-set="catidad" t-value="objline.qty_done"/>
                                                             <span t-esc="int(objline.qty_done)"/>
+                                                             
+                                                        
                                                         </t>
                                                         <t t-else="">
                                                             <t t-if="objline.product_qty > 0">
@@ -120,50 +121,36 @@
                                                                 <t t-else="">
                                                                     <t t-set="catidad" t-value="0"/>
                                                                 </t>
-                                                            </t> 
-                                                        </t>
-                                                        </td>
-                                                        <td style="border:none; text-align: right; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;">
-                                                        <t t-set= "sequencePU" t-value="" />
-                                                            <t t-foreach="lines" t-as="line">
-                                                                <t t-if="sequencePU == '' ">
-                                                                <span t-if="line.product_id == objline.product_id and line.quantity == catidad" t-field="line.price_unit"/>
                                                             </t>
-                                                            <t t-else="">
-                                                                <span t-if="line.product_id == objline.product_id and line.quantity == catidad and sequencePU != line.price_unit" t-field="line.price_unit"/>   
-                                                            </t>
-                                                                <t t-set= "sequencePU" t-value="line.price_unit" />  
-                                                            </t>
-                                                        </td>
-                                                        <td style="border:none; block-size: auto;text-align: right; writing-mode: horizontal-tb; width:10%; overflow: auto;">
-                                                        <span t-if="objline.lot_id != ''" t-field="objline.lot_id.name"/></td>
-                                                        <td style="border:none; block-size: auto; text-align: center; writing-mode: horizontal-tb; width:20%; overflow: auto;" >
-                                                        <t t-set= "sequenceV" t-value="" />
                                                         
+                                                            
+                                                        </t>
+                                                        
+                                                        </td>
+                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;">
                                                             <t t-foreach="lines" t-as="line">
-                                                            <t t-if="sequenceV == '' ">
-                                                                <span style="" t-if="line.product_id == objline.product_id and line.quantity == catidad" t-field="line.tax_ids"/>
+
+                                                                <span t-if="line.product_id == objline.product_id" t-field="line.price_unit"/>
+
                                                             </t>
-                                                            <t t-else="">
-                                                                <span style="" t-if="line.product_id == objline.product_id and line.quantity == catidad and sequenceV != line.price_unit" t-field="line.tax_ids"/>
-                                                            </t>
-                                                            <t t-set= "sequenceV" t-value="line.price_unit" />
+                                                        
+                                                        </td>
+                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;"><span t-if="objline.lot_id != ''" t-field="objline.lot_id.name"/></td>
+                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto;" t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                                            <t t-foreach="lines" t-as="line">
+                                                            <!-- <span t-if="line.product_id == objline.product_id" t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> -->
+                                                            <span t-if="line.product_id == objline.product_id" t-field="line.tax_ids"/>
                                                             </t>
                                                         </td>
-                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto; text-align:right;" >
 
-                                                        <t t-set= "sequenceTPU" t-value="" />
+                                                        <!-- lambda x: (x.description or x.name), ) -->
+
+                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto;" >
                                                         <t t-foreach="lines" t-as="line">
-                                                                <t t-if="sequenceTPU == '' ">
-                                                                    <span style="text-align:right;  "  t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0 and line.quantity == catidad" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
-                                                                    <span style="text-align:right; " t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 and line.quantity == catidad" t-esc="'%.2f'% (line.price_unit*catidad)"/>
-                                                                </t>
-                                                            <t t-else="">   
-                                                                <span style="text-align:right;  "  t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0 and line.quantity == catidad and sequenceTPU != line.price_unit" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
-                                                                <span style="text-align:right; " t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 and line.quantity == catidad and sequenceTPU != line.price_unit" t-esc="'%.2f'% (line.price_unit*catidad)"/>
-                                                            </t>
-                                                            <t t-set= "sequenceTPU" t-value="line.price_unit" />
-                                                                
+
+                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
+                                                                <span t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 " t-esc="'%.2f'% (line.price_unit*catidad)"/>
+
                                                             </t>
                                                         
                                                         </td>
@@ -318,18 +305,20 @@
                                 </div>
                                 <br />
                                 <footer style="padding-bottom: 50px;">
-                                    <div> 
-                                        <p>Esta factura vence el: <b class="m-0" t-field="o.invoice_date_due"/>,
-                                            después de esa fecha usted deberá pagar la cantidad de USD$ <span t-field="o.totalusd"/>
-                                            a la tasa publicada por el banco central de Venezuela en su portal <a href="https://www.bcv.org.ve/">www.bcv.org.ve</a>, 
-                                            de acuerdo a las Normativas y Disposiciones Legales Vigente. El factor de cambio de esta factura es de Bs. <span t-field="o.usd"/>
-                                            /USD$ y deberá ser pagada al cambio del día después de su vencimiento.
-                                        </p> 
-                                </div>
+                                    <p>
+                                    Esta factura vence el: <b class="m-0" t-field="o.invoice_date_due"/>, después de esa fecha usted deberá pagar
+                                    la cantidad de USD$ <span t-field="o.totalusd"/> a la tasa publicada por el banco central de venezuela
+                                    en su portal <a
+                            href="https://www.bcv.org.ve/"
+                        >www.bcv.org.ve</a>, de acuerdo a las Normativas y Disposicione
+                                    Legales Vigente.el factor de cambio de esta fectura es de Bs. <span
+                            t-field="o.usd"
+                        /> /USD$ y debera ser
+                                    pagada
+                                    al cambio del dia despues de su vencimiento.
+                                    </p>
                                 </footer>
                                 </div>
-
-                                
 
                             </div>
                         </div>
