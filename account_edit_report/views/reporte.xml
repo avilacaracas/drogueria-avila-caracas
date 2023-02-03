@@ -99,7 +99,7 @@
 
                                                 
                                                     <tr style="overflow: hidden;">
-                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;"> <span  t-if="objline.product_id.default_code != ''" t-field="objline.product_id.default_code" /></td>
+                                                        <td style="border:none; text-align: right; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;"> <span  t-if="objline.product_id.default_code != ''" t-field="objline.product_id.default_code" /></td>
                                                         <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:50%; overflow: auto;"><span t-if="objline.product_id.name != ''" t-field="objline.product_id.name"/></td>
                                                         <td style="text-align: right;border:none; block-size: auto; writing-mode: horizontal-tb; width:5%; overflow: auto;" >
                                                         
