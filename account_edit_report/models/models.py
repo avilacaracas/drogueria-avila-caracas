@@ -54,8 +54,11 @@ class datos_computados_convercion(models.Model):
 class clientAcesorVenta(models.Model):
     _inherit= 'res.partner'
 
-    is_advisor  = fields.Boolean(string='Es asesor de venta')
-    is_laboratory  = fields.Boolean(string='Es laboratorio')
+    is_advisor  = fields.Boolean(string='¿Es asesor de venta?')
+    is_laboratory  = fields.Boolean(string='¿Es laboratorio?')
+    is_client = fields.Boolean(string='¿Es Cliente?')
+    is_provider = fields.Boolean(string='¿Es Proveedor?')
+    is_employee = fields.Boolean(string='¿Es Empleado?')
 
 class orderAcesorVenta(models.Model):
     _inherit= 'sale.order'
@@ -97,6 +100,15 @@ class laboratorioStockMove(models.Model):
 
     laboratory = fields.Many2one(related='product_tmpl_id.laboratory')
 
+class barcodeLot(models.Model):
 
+    _inherit= 'stock.production.lot'
+
+    barcodes  = fields.Char('Codigo de Barras', compute='_codigo_de_barra')
+
+    def _codigo_de_barra(self):
+        print(self)
+        for prod_lot in self:
+            prod_lot.barcodes = prod_lot.product_id.barcode
 
 

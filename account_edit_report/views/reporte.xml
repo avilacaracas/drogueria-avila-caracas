@@ -106,8 +106,6 @@
                                                         <t t-if="objline.qty_done > 0">
                                                             <t t-set="catidad" t-value="objline.qty_done"/>
                                                             <span t-esc="int(objline.qty_done)"/>
-                                                             
-                                                        
                                                         </t>
                                                         <t t-else="">
                                                             <t t-if="objline.product_qty > 0">
@@ -122,37 +120,50 @@
                                                                 <t t-else="">
                                                                     <t t-set="catidad" t-value="0"/>
                                                                 </t>
-                                                            </t>
-                                                        
-                                                            
+                                                            </t> 
                                                         </t>
-                                                        
                                                         </td>
                                                         <td style="border:none; text-align: right; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;">
+                                                        <t t-set= "sequencePU" t-value="" />
                                                             <t t-foreach="lines" t-as="line">
-
+                                                                <t t-if="sequencePU == '' ">
                                                                 <span t-if="line.product_id == objline.product_id and line.quantity == catidad" t-field="line.price_unit"/>
-
                                                             </t>
-                                                        
+                                                            <t t-else="">
+                                                                <span t-if="line.product_id == objline.product_id and line.quantity == catidad and sequencePU != line.price_unit" t-field="line.price_unit"/>   
+                                                            </t>
+                                                                <t t-set= "sequencePU" t-value="line.price_unit" />  
+                                                            </t>
                                                         </td>
                                                         <td style="border:none; block-size: auto;text-align: right; writing-mode: horizontal-tb; width:10%; overflow: auto;">
                                                         <span t-if="objline.lot_id != ''" t-field="objline.lot_id.name"/></td>
                                                         <td style="border:none; block-size: auto; text-align: center; writing-mode: horizontal-tb; width:20%; overflow: auto;" >
+                                                        <t t-set= "sequenceV" t-value="" />
+                                                        
                                                             <t t-foreach="lines" t-as="line">
-                                                            <!-- <span t-if="line.product_id == objline.product_id" t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> -->
-                                                            <span style="" t-if="line.product_id == objline.product_id and line.quantity == catidad" t-field="line.tax_ids"/>
+                                                            <t t-if="sequenceV == '' ">
+                                                                <span style="" t-if="line.product_id == objline.product_id and line.quantity == catidad" t-field="line.tax_ids"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span style="" t-if="line.product_id == objline.product_id and line.quantity == catidad and sequenceV != line.price_unit" t-field="line.tax_ids"/>
+                                                            </t>
+                                                            <t t-set= "sequenceV" t-value="line.price_unit" />
                                                             </t>
                                                         </td>
-
-                                                        <!-- lambda x: (x.description or x.name), ) -->
-
                                                         <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto; text-align:right;" >
+
+                                                        <t t-set= "sequenceTPU" t-value="" />
                                                         <t t-foreach="lines" t-as="line">
-
-                                                                <span style="text-align:right;  "  t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0 and line.quantity == catidad" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
-                                                                <span style="text-align:right; " t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 and line.quantity == catidad" t-esc="'%.2f'% (line.price_unit*catidad)"/>
-
+                                                                <t t-if="sequenceTPU == '' ">
+                                                                    <span style="text-align:right;  "  t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0 and line.quantity == catidad" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
+                                                                    <span style="text-align:right; " t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 and line.quantity == catidad" t-esc="'%.2f'% (line.price_unit*catidad)"/>
+                                                                </t>
+                                                            <t t-else="">   
+                                                                <span style="text-align:right;  "  t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0 and line.quantity == catidad and sequenceTPU != line.price_unit" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
+                                                                <span style="text-align:right; " t-if="line.product_id == objline.product_id and line.tax_ids.amount == 0 and line.quantity == catidad and sequenceTPU != line.price_unit" t-esc="'%.2f'% (line.price_unit*catidad)"/>
+                                                            </t>
+                                                            <t t-set= "sequenceTPU" t-value="line.price_unit" />
+                                                                
                                                             </t>
                                                         
                                                         </td>
