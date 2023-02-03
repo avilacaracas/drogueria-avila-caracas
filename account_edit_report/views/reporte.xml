@@ -132,7 +132,7 @@
                                                             <t t-set="sequence" t-esc=""/> 
                                                             <t t-foreach="lines" t-as="line">
 
-                                                                <span t-if="line.product_id == objline.product_id and line.sequence != sequence " t-field="line.price_unit"/>
+                                                                <span t-if="line.product_id == objline.product_id and line.sequence != sequence" t-field="line.price_unit"/>
                                                                   <t t-set="sequence" t-value="line.sequence"/>   
                                                             </t>
                                                         
@@ -142,7 +142,7 @@
                                                         <td style="border:none; block-size: auto; text-align: center; writing-mode: horizontal-tb; width:20%; overflow: auto;" >
                                                             <t t-foreach="lines" t-as="line">
                                                             <!-- <span t-if="line.product_id == objline.product_id" t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> -->
-                                                            <span style="" t-if="line.product_id == objline.product_id  " t-field="line.tax_ids"/>
+                                                            <span style="" t-if="line.product_id == objline.product_id" t-field="line.tax_ids"/>
                                                             </t>
                                                         </td>
 
@@ -181,14 +181,11 @@
                                             <td name="account_invoice_line_default_code"><span t-field="line.product_id.default_code" t-options="{'widget': 'text'}"/></td>
                                             <td name="account_invoice_line_name"><span t-field="line.product_id.name" t-options="{'widget': 'text'}"/></td>
                                             <td >
-                                                <span t-field="line.quantity"/>
-                                                <!-- <span t-field="line.product_uom_id"  groups="uom.group_uom"/> -->
+                                                <span t-field="line.quantity"/> 
                                             </td>
                                             <td>
                                                 <span class="text-nowrap" t-field="line.price_unit"/>
                                             </td>
-
-
                                             <td t-if="display_discount">
                                                 <span class="text-nowrap" t-field="line.discount"/>
                                             </td>
@@ -228,12 +225,7 @@
                                         </tr>
                                     </t>
                                 </t>
-
-
                                 </t>
-
-
-                            
                             </tbody>
                         </table>
 
@@ -306,7 +298,6 @@
                                     </div>
 
                                 </div>
-                                <br />
                                 <footer style="padding-bottom: 50px;">
                                     <div> 
                                         <p>Esta factura vence el: <b class="m-0" t-field="o.invoice_date_due"/>,
