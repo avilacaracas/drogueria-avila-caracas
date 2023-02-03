@@ -58,7 +58,7 @@ class clientAcesorVenta(models.Model):
     is_laboratory  = fields.Boolean(string='¿Es laboratorio?')
     is_client = fields.Boolean(string='¿Es Cliente?')
     is_provider = fields.Boolean(string='¿Es Proveedor?')
-    is_employee = fields.Boolean(string='¿Es Empleado?')
+    # is_employee = fields.Boolean(string='¿Es Empleado?')
 
 class orderAcesorVenta(models.Model):
     _inherit= 'sale.order'
