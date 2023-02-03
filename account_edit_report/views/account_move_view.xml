@@ -77,7 +77,7 @@
                     <field name="is_employee"/>
                 </xpath>
             </field>
-        </record>   
+        </record>    
 
        <record id="view_res_partne_laboratory" model="ir.ui.view">
             <field name="name">view.product.template.formt</field>
