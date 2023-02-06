@@ -100,3 +100,5 @@ class laboratorioStockMove(models.Model):
 
 
 
+
+
