@@ -20,4 +20,4 @@ class typeClientEmpleyer(models.Model):
 
     is_employee  = fields.Boolean(string='Es Empleado')
     is_client = fields.Boolean(string='Es Cliente')
-    is_provide  = fields.Boolean(string='Es Proveedor')
+    is_provider  = fields.Boolean(string='Es Proveedor')
