@@ -1,0 +1,29 @@
+<odoo>
+  <data>
+    <!-- <record id="view_production_lot_view_tree_code" model="ir.ui.view">
+        <field name="name">stock.production.lot.tree.inherit.product.expiry.code</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='create_date']" position="after">
+                <field name="barcodes" />
+            </xpath>
+        </field>
+    </record>  -->
+
+     <record id="view_res_partne_form_intdz" model="ir.ui.view">
+            <field name="name">view.res.partne.formzt</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_laboratory']" position="after">
+                    <field name="is_client"/>
+                    <field name="is_provider"/>
+                    <field name="is_employee"/>
+                </xpath>
+            </field>
+        </record> 
+
+
+  </data>
+</odoo>

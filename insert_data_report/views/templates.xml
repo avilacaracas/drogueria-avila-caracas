@@ -1,0 +1,15 @@
+
+<odoo>
+  <data>
+    <!-- <template id="report_invoice_document_inherited" inherit_id="account.report_invoice_document">
+      <xpath expr="//table[@class='table table-condensed']/thead/tr" position="after">
+        <th class="text-right">Lote</th>
+      </xpath>
+      <xpath expr="//table[@class='table table-condensed']/tbody/tr" position="after">
+        <td class="text-right">
+          <span t-field="o.lot_id.name"/>
+        </td>
+      </xpath>
+    </template> -->
+  </data>
+</odoo>
