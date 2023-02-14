@@ -1,0 +1,26 @@
+<odoo>
+  <data>
+   <record id="currenty_rate_usd" model="ir.ui.view">
+      <field name="name">currenty.rate.usd</field>
+      <field name="model">account.move</field>
+      <field name="inherit_id" ref="account.view_out_invoice_tree" />
+      <field name="arch" type="xml">
+      <xpath expr="//field[@name='amount_total_signed']" position="after">
+            <field name="total_rate" sum="total_rate" string="Total USD" decoration-bf="1"/>  
+        </xpath> 
+      </field>   
+  </record>
+
+<record id="currenty_rate_usd_bill" model="ir.ui.view">
+      <field name="name">currenty.rate.usd.bill</field>
+      <field name="model">account.move</field>
+      <field name="inherit_id" ref="account.view_in_invoice_bill_tree" />
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='amount_total_signed']" position="after">
+            <field name="total_rate" sum="total_rate" string="Total USD" decoration-bf="1"/>  
+        </xpath> 
+      </field>   
+  </record>
+
+  </data>
+</odoo>
