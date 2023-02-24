@@ -304,9 +304,9 @@
                                 <footer style="padding-bottom: 50px;">
                                     <div> 
                                         <p>Esta factura vence el: <b class="m-0" t-field="o.invoice_date_due"/>,
-                                            después de esa fecha usted deberá pagar la cantidad de USD$ <span t-field="o.total_rate"/>
+                                            después de esa fecha usted deberá pagar la cantidad de USD$  <span t-field="o.totalusd"/>
                                             a la tasa publicada por el banco central de Venezuela en su portal <a href="https://www.bcv.org.ve/">www.bcv.org.ve</a>, 
-                                            de acuerdo a las Normativas y Disposiciones Legales Vigente. El factor de cambio de esta factura es de Bs. <span t-field="o.usd_rate"/>
+                                            de acuerdo a las Normativas y Disposiciones Legales Vigente. El factor de cambio de esta factura es de Bs. <span t-field="o.usd"/> 
                                             /USD$ y deberá ser pagada al cambio del día después de su vencimiento.
                                         </p> 
                                 
