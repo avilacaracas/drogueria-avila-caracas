@@ -20,25 +20,41 @@ class account_edit_report(models.Model):
 class datos_computados_convercion(models.Model):
     _inherit = 'account.move'
 
-
     usd = fields.Float(compute="_compute_usd")
     totalusd = fields.Float(compute="_compute_usd")
     advisor  = fields.Many2one(comodel_name='res.partner',inverse_name='id',domain="[('is_advisor','=','1')]" ,string='Asesor de venta')
+    # usd_rate = fields.Float(string='USD Rate', default=lambda self: self._get_usd_rate())
+    # total_rate = fields.Float(string='Total Rate', compute='_compute_total_rate', store=True)
+    
+    @api.depends('amount_total', 'usd_rate')
+    def _compute_total_rate(self):
+        for record in self:
+            record.total_rate = round(record.amount_total / record.usd_rate,2)
+    
+
+    def _get_usd_rate(self):
+        currency_usd = self.env['res.currency'].sudo().search([('name', '=', 'USD')], limit=1)
+        if currency_usd:
+            rate = self.env['res.currency.rate'].sudo().search([
+                ('currency_id', '=', currency_usd.id),
+                ('name', '<=', fields.Date.today())
+            ], order='name DESC', limit=1)
+            if rate:
+                return rate.inverse_company_rate
+        return 0.0
+        
+
 
     def action_post(self):
         rec = super().action_post()
         
-        
-        
         if self.invoice_origin:
-
             orders = self.env['sale.order'].search([('name','=',self.invoice_origin)])
             for order in orders:
                 self.write({'advisor': order.advisor,})
-        
         return rec
     
-
+    
 
 
     def _compute_usd(self):
@@ -48,8 +64,18 @@ class datos_computados_convercion(models.Model):
         
         self.totalusd = round(self.amount_residual * rates.rate, 2)
       
-       
+# class  stockAccountLine(models.Model):
+#     _name = "stock.account.line.lot"
 
+#     origin = fields.Char()
+#     qty = fields.Float(compute="_compute_usd")
+#     # lot_ = 
+
+# class relacionarLotFact(models.Model):
+#     _inherit = 'stock.picking'
+
+#     def button_validate(self):
+#         line = self.env['stock.move.line'].sudo().search([('picking_id','=',self.id)])
 
 class clientAcesorVenta(models.Model):
     _inherit= 'res.partner'
@@ -96,6 +122,8 @@ class laboratorioStockMove(models.Model):
         help="Technical: used in views")
 
     laboratory = fields.Many2one(related='product_tmpl_id.laboratory')
+
+
 
 
 

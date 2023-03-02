@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+        <record model="ir.ui.view" id="sale_confirm_extended_for_warehouse">
+            <field name="name">stock.warehose.extended</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref = "stock.view_warehouse"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name= "is_delivery_set_to_done"/>
+                    <field name= "create_invoice" />
+                    <field name= "validate_invoice" />
+                </field>
+            </field>
+        </record>
+
+        <record id="view_sale_order_formbt" model="ir.ui.view">
+            <field name="name">view.sale.order.formbt</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath  expr="//button[@name='action_confirm']"  position="after">
+
+                <button name="action_confirm_automatic" id="action_confirm_automatic" data-hotkey="v"
+                        string="Confirmación automática" class="btn-primary" type="object"
+                        attrs="{'invisible': [('state', 'not in', ['sent'])]}"/>
+                    <button name="action_confirm_automatic" data-hotkey="v"
+                        string="Confirmación automática" type="object"
+                        attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+
+                 <!-- <button name="action_print_invoice" string="Imprimir factura" type="object" /> -->
+                
+                    
+                </xpath>
+
+                <xpath  expr="//field[@name='partner_shipping_id']"  position="after">
+                    <field name="guia_movilizacion" />
+                    <field name="journal_id"  string="Diario de ventas" domain="[('type', '=', 'sale')]" />
+                
+                    
+                </xpath>
+                
+            </field>
+        </record>
+
+       
+       
+
+</data>
+</odoo>

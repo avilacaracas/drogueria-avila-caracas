@@ -62,7 +62,7 @@
                                 </div>
                                 <br />
 
-                                <table class="" style=" width: 100%;  block-size: 680px; writing-mode: horizontal-tb; display: block; min-height: 680px;" name="invoice_line_table">
+                                <table class="" style=" width: 100%; overflow: auto; block-size: 680px; writing-mode: horizontal-tb; display: block; min-height: 680px;" name="invoice_line_table">
                             <thead class="border border-dark">
                                 <tr>
                                     <th name="th_codigo" style="width: 10%; overflow: auto; ">Codigo</th>
@@ -78,7 +78,7 @@
                                     <th name="th_taxes" style="width: 20%; overflow: auto; text-align: center;"><span>Imp</span></th>
                                     <th name="th_subtotal" style="width: 10%; overflow: auto;">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Total</span>
-                                        <span groups="account.group_show_line_subtotals_tax_included ">Total</span>
+                                        <span groups="account.group_show_line_subtotals_tax_included ">Precio Total</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -99,9 +99,9 @@
 
                                                 
                                                     <tr style="overflow: hidden;">
-                                                        <td style="overflow-x: hidden; border:none; block-size: auto; writing-mode: horizontal-tb; width:10%; "> <span  t-if="objline.product_id.default_code != ''" t-field="objline.product_id.default_code" /></td>
-                                                        <td style=" overflow-x: hidden; border:none; block-size: auto; writing-mode: horizontal-tb; width:50%; "><span t-if="objline.product_id.name != ''" t-field="objline.product_id.name"/></td>
-                                                        <td style="overflow-x: hidden; text-align: right;border:none; block-size: auto; writing-mode: horizontal-tb; width:5%;" >
+                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;"> <span  t-if="objline.product_id.default_code != ''" t-field="objline.product_id.default_code" /></td>
+                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:50%; overflow: auto;"><span t-if="objline.product_id.name != ''" t-field="objline.product_id.name"/></td>
+                                                        <td style="text-align: right;border:none; block-size: auto; writing-mode: horizontal-tb; width:5%; overflow: auto;" >
                                                         
                                                         <t t-if="objline.qty_done > 0">
                                                             <t t-set="catidad" t-value="objline.qty_done"/>
@@ -128,7 +128,7 @@
                                                         </t>
                                                         
                                                         </td>
-                                                        <td style="overflow-x: hidden; border:none; text-align: right; block-size: auto; writing-mode: horizontal-tb; width:10%;">
+                                                        <td style="border:none; text-align: right; block-size: auto; writing-mode: horizontal-tb; width:10%; overflow: auto;">
                                                             <t t-foreach="lines" t-as="line">
 
                                                                 <span t-if="line.product_id == objline.product_id" t-field="line.price_unit"/>
@@ -136,9 +136,9 @@
                                                             </t>
                                                         
                                                         </td>
-                                                        <td style="overflow-x: hidden; border:none; block-size: auto;text-align: right; writing-mode: horizontal-tb; width:10%; ">
+                                                        <td style="border:none; block-size: auto;text-align: right; writing-mode: horizontal-tb; width:10%; overflow: auto;">
                                                         <span t-if="objline.lot_id != ''" t-field="objline.lot_id.name"/></td>
-                                                        <td style="overflow-x: hidden; border:none; block-size: auto; text-align: center; writing-mode: horizontal-tb; width:20%; " >
+                                                        <td style="border:none; block-size: auto; text-align: center; writing-mode: horizontal-tb; width:20%; overflow: auto;" >
                                                             <t t-foreach="lines" t-as="line">
                                                             <!-- <span t-if="line.product_id == objline.product_id" t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/> -->
                                                             <span style="" t-if="line.product_id == objline.product_id" t-field="line.tax_ids"/>
@@ -147,7 +147,7 @@
 
                                                         <!-- lambda x: (x.description or x.name), ) -->
 
-                                                        <td style="overflow-x: hidden; border:none; block-size: auto; writing-mode: horizontal-tb; width:20%;  text-align:right;" >
+                                                        <td style="border:none; block-size: auto; writing-mode: horizontal-tb; width:20%; overflow: auto; text-align:right;" >
                                                         <t t-foreach="lines" t-as="line">
 
                                                                 <span style="text-align:right;  "  t-if="line.product_id == objline.product_id and line.tax_ids.amount > 0" t-esc="'%.2f'% ((line.price_unit*catidad)/line.tax_ids.amount)"/>
@@ -265,9 +265,14 @@
                                     </div>
                                     <div class="col-4 border border-dark ">
 
+                                    <br/>
+
                                     <table class="table table-sm" style="page-break-inside: avoid;">
+
+                                        
                                         <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)" />
                                         <t t-call="account.document_tax_totals" />
+
                                         
                                         <t t-if="print_with_payments">
                                         <t t-if="o.payment_state != 'invoicing_legacy'">
@@ -304,19 +309,12 @@
                                 <footer style="padding-bottom: 50px;">
                                     <div> 
                                         <p>Esta factura vence el: <b class="m-0" t-field="o.invoice_date_due"/>,
-                                            después de esa fecha usted deberá pagar la cantidad de USD$  <span t-field="o.totalusd"/>
+                                            después de esa fecha usted deberá pagar la cantidad de USD$ <span t-field="o.total_rate"/>
                                             a la tasa publicada por el banco central de Venezuela en su portal <a href="https://www.bcv.org.ve/">www.bcv.org.ve</a>, 
-                                            de acuerdo a las Normativas y Disposiciones Legales Vigente. El factor de cambio de esta factura es de Bs. <span t-field="o.usd"/> 
+                                            de acuerdo a las Normativas y Disposiciones Legales Vigente. El factor de cambio de esta factura es de Bs. <span t-field="o.usd_rate"/>
                                             /USD$ y deberá ser pagada al cambio del día después de su vencimiento.
                                         </p> 
-                                
-                                        <!-- <p>Esta factura vence el: <b class="m-0" t-field="o.invoice_date_due"/>,
-                                            después de esa fecha usted deberá pagar la cantidad de USD$ <span t-field="o.totalusd"/>
-                                            a la tasa publicada por el banco central de Venezuela en su portal <a href="https://www.bcv.org.ve/">www.bcv.org.ve</a>, 
-                                            de acuerdo a las Normativas y Disposiciones Legales Vigente. El factor de cambio de esta factura es de Bs. <span t-field="o.usd"/>
-                                            /USD$ y deberá ser pagada al cambio del día después de su vencimiento.
-                                        </p>  -->
-                                    </div>
+                                </div>
                                 </footer>
                                 </div>
 
