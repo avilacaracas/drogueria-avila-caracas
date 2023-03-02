@@ -112,7 +112,6 @@ class AccountInvoice(models.Model):
                 ItemsStock = self.env['stock.move.line'].search([('move_id', '=', i.id)])
                 
                 for istock in ItemsStock:
-                    print(ItemsStock)
                     if istock.product_qty>0:
                         quantity=istock.product_qty
                     elif istock.product_uom_qty>0:

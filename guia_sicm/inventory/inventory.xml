@@ -72,5 +72,7 @@
 
     <menuitem id="menu_Inventary_Guia_control" name="Guías" sequence="2" parent="stock.menu_stock_root"/>
     <menuitem id="menu_Inventary_Guia_control_items" name="Listados de guias" parent="menu_Inventary_Guia_control" sequence="0" action="view_guias_Movilizacion_view_inventary"/>
+    <menuitem id="menu_Sale_Guia_control_items" name="Listados de guias" parent="sale.sale_menu_root" sequence="2" action="view_guias_Movilizacion_view_inventary"/>
+    
     </data>
 </odoo>
