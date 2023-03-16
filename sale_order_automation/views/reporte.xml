@@ -121,7 +121,7 @@
                                         <tr>
                                             <t t-if="not line.display_type" name="account_invoice_line_accountable">
 
-                                                <td style="overflow-x: hidden;" name="account_invoice_line_default_code"><span t-field="line.product_id.default_code" t-options="{'widget': 'text'}"/></td>
+                                                <td style="overflow-x: hidden;" name="account_invoice_line_default_code[-10:]"><span t-field="line.product_id.default_code" t-options="{'widget': 'text'}"/></td>
                                                 <td style="overflow-x: hidden;" name="account_invoice_line_name"><span t-field="line.product_id.name" t-options="{'widget': 'text'}"/></td>
                                                 <td style="text-align: right; overflow-x: hidden; ">
                                                     <span  t-esc="int(line.quantity)"/>
