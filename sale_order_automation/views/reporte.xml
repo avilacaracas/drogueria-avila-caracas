@@ -111,8 +111,8 @@
                             </thead>
                             <tbody class="" style="font-size:10px">
                                 <t t-set="current_subtotal" t-value="0"/>
-                                <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
-                                
+                                <!-- <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/> -->
+                                <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (l.product_id.name.lower(),-l.sequence, l.date, l.move_name, -l.id), reverse=False)"/>
                                 
                                     <t t-foreach="lines" t-as="line">
                                         <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
@@ -193,8 +193,8 @@
                                         <br />
                                     </t>
                                     <span t-if="o.internal_notes != ''" t-field="o.internal_notes"/>
-                                    <br />
-                                    <span t-if="o.partner_id.zip != ''" t-field="o.partner_id.zip"/>
+                                    <br t-if="o.internal_notes != ''" />
+                                    
                                     <span class="">a nombre de: </span>
                                     <span t-field="o.company_id.name" />
                                     <span class="">, Rif:</span>
@@ -216,7 +216,7 @@
                                             <t t-foreach="payments_vals" t-as="payment_vals">
                                             <tr>
                                                 <td>
-                                                <i class="oe_form_field text-right oe_payment_label">Paid on
+                                                <i class="oe_form_field text-right oe_payment_label">pagado el
                                                     <t t-esc="payment_vals['date']" t-options='{"widget": "date"}' />
                                                 </i>
                                                 </td>
@@ -228,7 +228,7 @@
                                             </t>
                                             <t t-if="len(payments_vals) > 0">
                                             <tr class="border-black">
-                                                <td><strong>Amount Due</strong></td>
+                                                <td><strong>Importe adeudado</strong></td>
                                                 <td class="text-right">
                                                 <span t-field="o.amount_residual" />
                                                 </td>
