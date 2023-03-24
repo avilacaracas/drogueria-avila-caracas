@@ -1,0 +1,303 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_order_automation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-23 04:03+0000\n"
+"PO-Revision-Date: 2023-03-23 04:03+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid ""
+",\n"
+"                                            después de esa fecha usted deberá pagar la cantidad de USD$"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid ""
+", \n"
+"                                            de acuerdo a las Normativas y Disposiciones Legales Vigente. El factor de cambio de esta factura es de Bs."
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "/USD$ y deberá ser pagada al cambio del día después de su vencimiento."
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Ciudad: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Cliente: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Codigo Postal: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Direccion: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Emisión: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Estados: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Untaxed Amount"
+msgstr Importe no gravado"
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Factura a nombre de:</b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Orden de compra: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>R.I.F: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>SICM: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Telefonos: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Vencimiento: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<b>Vendedor: </b>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid ""
+"<br/>\n"
+"                                    \n"
+"                                    <span class=\"\">Enviar Soporte a : </span>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<span class=\"\">, Rif:</span>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<span class=\"\">a nombre de: </span>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Total</span>\n"
+"                                        <span groups=\"account.group_show_line_subtotals_tax_included \">Total</span>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid ""
+"<span><b>Únicamente </b> pagar por transferencia o depositos a las siguientes cuentas:</span>\n"
+"                                    <br/>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<span>Cant.</span>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<span>Descripción</span>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<span>Imp</span>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<span>Precio</span>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "<strong>Importe adeudado</strong>"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Codigo"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.view_sale_order_formbt
+msgid "Confirmación automática"
+msgstr ""
+
+#. module: sale_order_automation
+#: model:ir.model.fields,field_description:sale_order_automation.field_stock_warehouse__create_invoice
+msgid "Create Invoice?"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.view_sale_order_formbt
+msgid "Diario de ventas"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Esta factura vence el:"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Factura"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Factura cancelada"
+msgstr ""
+
+#. module: sale_order_automation
+#: model:ir.model.fields,field_description:sale_order_automation.field_sale_order__guia_movilizacion
+msgid "Guia Movilizacion"
+msgstr ""
+
+#. module: sale_order_automation
+#: model:ir.model.fields,field_description:sale_order_automation.field_stock_warehouse__is_delivery_set_to_done
+msgid "Is Delivery Set to Done"
+msgstr ""
+
+#. module: sale_order_automation
+#: model:ir.model.fields,field_description:sale_order_automation.field_sale_order__journal_id
+msgid "Journal"
+msgstr ""
+
+#. module: sale_order_automation
+#: model:ir.model,name:sale_order_automation.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: sale_order_automation
+#: model:ir.model,name:sale_order_automation.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Lote"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Nota de crédito"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Nota de crédito del proveedor"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Proyecto de factura"
+msgstr ""
+
+#. module: sale_order_automation
+#: model:ir.model,name:sale_order_automation.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: sale_order_automation
+#: model:ir.model,name:sale_order_automation.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: sale_order_automation
+#: model:ir.model.fields,field_description:sale_order_automation.field_stock_picking__tag_modif
+msgid "Tag Modif"
+msgstr ""
+
+#. module: sale_order_automation
+#: model:ir.model,name:sale_order_automation.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: sale_order_automation
+#: model:ir.model.fields,field_description:sale_order_automation.field_stock_warehouse__validate_invoice
+msgid "Validate invoice?"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "Vendor Bill"
+msgstr ""
+
+#. module: sale_order_automation
+#: model:ir.model,name:sale_order_automation.model_stock_warehouse
+msgid "Warehouse"
+msgstr "Almacén"
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "a la tasa publicada por el banco central de Venezuela en su portal"
+msgstr ""
+
+#. module: sale_order_automation
+#: model:ir.model.fields,field_description:sale_order_automation.field_account_move_line__lot_name
+#: model:ir.model.fields,field_description:sale_order_automation.field_sale_order_line__lot_name
+msgid "lot_name"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "pagado el"
+msgstr ""
+
+#. module: sale_order_automation
+#: model_terms:ir.ui.view,arch_db:sale_order_automation.report_invoice_factura_formato_libre
+msgid "www.bcv.org.ve"
+msgstr ""
