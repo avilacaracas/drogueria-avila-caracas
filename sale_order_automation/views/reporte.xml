@@ -21,10 +21,10 @@
              </xpath>
     </template>
 
-    <template id="report_invoice_factura_formato_libre" inherit_id="account.report_invoice_document" active="True" priority="17">
+    <template id="report_invoice_factura_formato_libre_imp" inherit_id="account.report_invoice_document" active="True" priority="17">
             
-            <xpath expr="//address" position="replace"  >
-             </xpath>
+<!--             <xpath expr="//address" position="replace"  >
+             </xpath> -->
              
               
             <xpath expr="//div[@class='page']" position="replace">
