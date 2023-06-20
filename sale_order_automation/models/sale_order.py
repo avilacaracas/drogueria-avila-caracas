@@ -5,7 +5,7 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     guia_movilizacion = fields.Boolean(default=False, readonly=False)
-    journal_id = fields.Many2one('account.journal', string='Journal', required=True, readonly=True, states={'draft': [('readonly', False)]},)
+    journal_id = fields.Many2one('account.journal', string='Journal', required=True,)
       
 
 
