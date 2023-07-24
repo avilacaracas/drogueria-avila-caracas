@@ -13,3 +13,6 @@
 [submodule "reporting-engine"]
 	path = reporting-engine
 	url = git@github.com:OCA/reporting-engine.git
+[submodule "odoo-mastercore/davila_addons"]
+	path = odoo-mastercore/davila_addons
+	url = git@github.com:odoo-mastercore/davila_addons.git
