@@ -1,0 +1,18 @@
+[submodule "reporting-engine"]
+	path = reporting-engine
+	url = git@github.com:OCA/reporting-engine.git
+[submodule "odoo-mastercore/odoo-venezuela"]
+	path = odoo-mastercore/odoo-venezuela
+	url = git@github.com:odoo-mastercore/odoo-venezuela.git
+[submodule "odoo-mastercore/odoo-venezuela-extension"]
+	path = odoo-mastercore/odoo-venezuela-extension
+	url = git@github.com:odoo-mastercore/odoo-venezuela-extension.git
+[submodule "odoo-mastercore/davila_addons"]
+	path = odoo-mastercore/davila_addons
+	url = git@github.com:odoo-mastercore/davila_addons.git
+[submodule "odoo-mastercore/account-payment"]
+	path = odoo-mastercore/account-payment
+	url = git@github.com:odoo-mastercore/account-payment.git
+[submodule "odoo-mastercore/account-financial-tools"]
+	path = odoo-mastercore/account-financial-tools
+	url = git@github.com:odoo-mastercore/account-financial-tools.git
