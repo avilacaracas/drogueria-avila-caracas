@@ -16,3 +16,8 @@
 [submodule "odoo-mastercore/account-financial-tools"]
 	path = odoo-mastercore/account-financial-tools
 	url = git@github.com:odoo-mastercore/account-financial-tools.git
+
+[submodule "odoo-mastercore/stock_addons"]
+	path = odoo-mastercore/stock_addons
+	url = git@github.com:odoo-mastercore/stock_addons.git
+	branch = 16.0
