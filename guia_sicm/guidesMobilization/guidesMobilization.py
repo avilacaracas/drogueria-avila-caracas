@@ -91,7 +91,7 @@ class guidesMobilization(models.Model):
 
             documento= ''
             for i in self.factura:  
-                documento += i.name.split('/')[2]+','
+                documento += i.name+','
 
             inicializar_guia = cli.service.inicializar_guia(str(credentials.code_segurity), str(self.cliente.codsicm) , str(self.bultos),documento )
             validate = inicializar_guia.split(';')           
