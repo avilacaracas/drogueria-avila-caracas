@@ -21,3 +21,8 @@
 	path = odoo-mastercore/stock_addons
 	url = git@github.com:odoo-mastercore/stock_addons.git
 	branch = 16.0
+
+[submodule "OCA/brand"]
+	path = OCA/brand
+	url = git@github.com:OCA/brand.git
+	branch = 15.0
